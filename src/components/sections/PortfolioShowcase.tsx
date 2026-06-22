@@ -54,7 +54,7 @@ export function PortfolioShowcase() {
       id="portfolio-showcase"
     >
       {/* Section Header - pinned */}
-      <div className="relative z-10 px-5 pb-4 pt-16 sm:px-8 md:absolute md:left-0 md:right-0 md:top-0 md:px-6 md:pt-12 lg:px-10 bg-gradient-to-b from-cream via-cream to-transparent">
+      <div className="portfolio-showcase-header relative z-10 px-5 pb-4 pt-16 sm:px-8 md:absolute md:left-0 md:right-0 md:top-0 md:px-6 md:pt-12 lg:px-10">
         <div className="container-wide flex items-end justify-between">
           <div>
             <p className="text-label mb-2">Our Work</p>
@@ -64,7 +64,7 @@ export function PortfolioShowcase() {
           </div>
           <Link
             href="/portfolio"
-            className="hidden md:flex items-center gap-2 text-sm font-medium text-forest hover:text-bronze transition-colors"
+            className="portfolio-showcase-link hidden md:flex items-center gap-2 text-sm font-medium transition-colors"
           >
             View All Projects
             <ArrowRight className="w-4 h-4" />

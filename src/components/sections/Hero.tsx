@@ -2,9 +2,9 @@
 
 import { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, MessageCircle } from "lucide-react";
 import gsap from "gsap";
 import { getWhatsAppLink } from "@/lib/utils";
 
@@ -13,111 +13,84 @@ const HeroScene = dynamic(
   { ssr: false }
 );
 
-const heroImages = [
-  { src: "/images/image copy 8.png", alt: "Giraffe sculpture for a resort", label: "Animal Forms", className: "right-[6%] top-[16%] h-44 w-36 rotate-6" },
-  { src: "/images/image copy 17.png", alt: "Metal sculpture work", label: "Metal Work", className: "right-[24%] top-[10%] h-32 w-28 -rotate-6" },
-  { src: "/images/image copy 20.png", alt: "Garden sculpture detail", label: "Garden Art", className: "right-[7%] bottom-[15%] h-36 w-32 -rotate-3" },
-  { src: "/images/image copy 38.png", alt: "Playground sculpture installation", label: "Play Spaces", className: "right-[30%] bottom-[10%] h-32 w-28 rotate-6" },
-];
-
 export function Hero() {
-  const containerRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(".hero-reveal", {
-        opacity: 0,
-        y: 34,
-        stagger: 0.11,
-        duration: 0.85,
-        delay: 0.25,
-        ease: "power3.out",
-      });
-    }, containerRef);
+      const timeline = gsap.timeline({ delay: 0.15 });
+      timeline
+        .from(imageRef.current, { scale: 1.08, duration: 1.8, ease: "power3.out" })
+        .from(".hero-line", { scaleX: 0, transformOrigin: "left", duration: 0.65, ease: "power3.out" }, "-=1.25")
+        .from(".hero-reveal", { opacity: 0, y: 34, stagger: 0.1, duration: 0.75, ease: "power3.out" }, "-=0.95");
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      id="hero-section"
-      className="hero-environment relative isolate min-h-[680px] h-[100svh] max-h-[980px] overflow-hidden"
-    >
-      <div className="hero-ambient absolute inset-0" />
-      <div className="hero-orb hero-orb-one" />
-      <div className="hero-orb hero-orb-two" />
-      <div className="absolute inset-y-0 right-0 z-[1] w-full lg:w-[64%]">
-        <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block">
-          {heroImages.map((image, index) => (
-            <div
-              key={image.src}
-              className={`hero-image-card absolute overflow-hidden rounded-2xl border border-white/15 bg-white/10 p-1 shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-sm ${image.className}`}
-              style={{ animationDelay: `${index * 0.8}s` }}
-            >
-              <div className="relative h-full w-full overflow-hidden rounded-xl">
-                <Image src={image.src} alt={image.alt} fill sizes="180px" className="object-cover" priority={index < 2} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-                <span className="absolute bottom-2 left-2 rounded-full bg-black/35 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-                  {image.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-x-4 top-24 z-[1] flex justify-between lg:hidden">
-          {heroImages.slice(0, 2).map((image, index) => (
-            <div key={image.src} className={`relative h-20 w-16 overflow-hidden rounded-xl border border-white/15 opacity-55 shadow-lg ${index === 0 ? "-rotate-6" : "rotate-6"}`}>
-              <Image src={image.src} alt={image.alt} fill sizes="80px" className="object-cover" priority={index === 0} />
-              <div className="absolute inset-0 bg-black/15" />
-            </div>
-          ))}
-        </div>
-        <HeroScene />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#10251d] via-[#10251d]/45 to-transparent lg:bg-gradient-to-r lg:from-[#132b22] lg:via-transparent lg:to-transparent" />
+    <section ref={sectionRef} id="hero-section" className="relative isolate min-h-[680px] h-[100svh] max-h-[960px] overflow-hidden bg-[#0a1711]">
+      <div ref={imageRef} className="absolute inset-0">
+        <Image
+          src="/hero-giraffe-portrait.png"
+          alt="Handcrafted giraffe sculptures in a landscaped garden"
+          fill
+          priority
+          sizes="(max-width: 767px) 100vw, 0px"
+          className="object-cover object-[58%_30%] md:hidden"
+        />
+        <Image
+          src="/hero-giraffe-landscape.jpeg"
+          alt="Handcrafted giraffe sculptures in a landscaped garden"
+          fill
+          priority
+          sizes="(min-width: 768px) 100vw, 0px"
+          className="hidden object-cover object-center md:block"
+        />
       </div>
 
-      <div className="relative z-[2] container-wide mx-auto flex h-full items-end px-5 pb-20 pt-28 sm:px-8 sm:pb-24 lg:items-center lg:px-10 lg:pb-0">
-        <div ref={contentRef} className="max-w-[690px] text-center lg:text-left">
-          <div className="hero-reveal mb-5 inline-flex items-center gap-3 rounded-full border border-bronze-light/25 bg-black/15 px-4 py-2 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-bronze-light" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-bronze-light sm:text-xs">
-              Hyderabad craft studio · Made to order
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/20 lg:bg-gradient-to-r lg:from-black/82 lg:via-black/48 lg:to-black/12" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,transparent_0%,transparent_24%,rgba(0,0,0,0.14)_65%,rgba(0,0,0,0.34)_100%)]" />
+      <HeroScene />
+
+      <div className="relative z-[3] container-wide mx-auto flex h-full items-end px-5 pb-20 pt-28 sm:px-8 sm:pb-24 lg:items-center lg:px-10 lg:pb-0">
+        <div className="max-w-[760px] text-left">
+          <div className="hero-reveal mb-5 flex items-center gap-3">
+            <span className="hero-line h-px w-10 bg-bronze-light" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-bronze-light sm:text-xs">
+              Custom sculpture · Hyderabad
             </span>
           </div>
 
-          <h1 className="hero-reveal text-[clamp(2.65rem,9.5vw,4.5rem)] font-bold leading-[0.98] tracking-[-0.035em] text-warm-white lg:text-[5.6rem]" style={{ fontFamily: "var(--font-heading)" }}>
-            Shape your idea into <span className="text-bronze-light">a sculpture people remember.</span>
+          <h1 className="hero-reveal max-w-3xl text-[clamp(3.25rem,12vw,5rem)] font-semibold leading-[0.9] tracking-[-0.045em] text-white lg:text-[6.5rem]" style={{ fontFamily: "var(--font-heading)" }}>
+            Ideas, shaped into <span className="text-bronze-light">art.</span>
           </h1>
 
-          <p className="hero-reveal mx-auto mt-6 max-w-xl text-sm leading-6 text-warm-white/68 sm:text-base sm:leading-7 lg:mx-0 lg:text-lg">
-            Custom cement, FRP, metal and landscape sculptures made with patient handwork,
-            practical planning and trusted local fabrication support.
+          <p className="hero-reveal mt-6 max-w-lg text-base leading-7 text-white/72 sm:text-lg">
+            Made-to-order sculptures for spaces people remember.
           </p>
 
-          <div className="hero-reveal mt-8 flex flex-col items-stretch justify-center gap-3 min-[420px]:flex-row min-[420px]:items-center lg:justify-start">
-            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-bronze min-h-12 px-7 text-xs ring-1 ring-white/20 shadow-[0_18px_50px_rgba(177,111,22,0.32)]">
-              WhatsApp your idea
-              <ArrowRight className="h-4 w-4" />
+          <div className="hero-reveal mt-8 flex flex-col gap-3 min-[420px]:flex-row">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hero-primary group inline-flex min-h-13 items-center justify-center gap-2 rounded-md bg-bronze px-7 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_18px_55px_rgba(173,105,21,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-bronze-light hover:shadow-[0_24px_65px_rgba(173,105,21,0.46)]">
+              <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
+              Discuss your idea
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
-            <Link href="/portfolio" className="inline-flex min-h-12 items-center justify-center rounded-sm border-2 border-warm-white/35 bg-warm-white/5 px-7 text-xs font-semibold uppercase tracking-[0.05em] text-warm-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-warm-white hover:text-charcoal hover:shadow-elevated">
-              Explore our work
+            <Link href="/portfolio" className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-md border border-white/35 bg-black/10 px-7 text-xs font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-charcoal">
+              View selected work
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
-          </div>
-
-          <div className="hero-reveal mt-7 flex items-center justify-center gap-5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/45 lg:justify-start">
-            <span>Cement</span><span className="h-1 w-1 rounded-full bg-bronze-light" /><span>Metal</span><span className="h-1 w-1 rounded-full bg-bronze-light" /><span>Landscape</span>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 z-[2] hidden items-center gap-3 lg:flex">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-warm-white/45">Move cursor · Discover</span>
-        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-white/20">
-          <ArrowDown className="h-4 w-4 animate-bounce-gentle text-warm-white/60" />
+      <div className="absolute bottom-7 right-7 z-[3] hidden items-center gap-3 lg:flex">
+        <span className="text-[9px] uppercase tracking-[0.26em] text-white/55">Scroll to explore</span>
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/25 bg-black/10 backdrop-blur-sm">
+          <ArrowDown className="h-4 w-4 animate-bounce-gentle text-white/75" />
         </span>
       </div>
     </section>

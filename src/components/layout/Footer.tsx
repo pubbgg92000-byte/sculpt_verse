@@ -28,14 +28,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <Link href="/" className="mb-6 flex items-center gap-4">
-                <span className="relative grid h-20 w-20 place-items-center rounded-2xl border border-bronze-light/25 bg-[radial-gradient(circle,rgba(196,164,90,0.22),transparent_65%)] shadow-[0_0_35px_rgba(196,164,90,0.2)]">
+              <Link href="/" className="group mb-6 flex items-center gap-4">
+                <span className="relative grid h-20 w-20 place-items-center rounded-full border border-bronze-light/30 bg-[radial-gradient(circle,rgba(196,164,90,0.24),rgba(196,164,90,0.05)_58%,transparent_72%)] shadow-[0_0_38px_rgba(196,164,90,0.2)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(196,164,90,0.32)]">
                   <Image
-                    src="/logo-cutout.png"
+                    src="/logo-mark.png"
                     alt="SculptVerse"
-                    width={96}
+                    width={64}
                     height={76}
-                    className="h-16 w-16 object-contain drop-shadow-[0_8px_18px_rgba(196,164,90,0.25)]"
+                    className="h-14 w-auto object-contain drop-shadow-[0_8px_18px_rgba(196,164,90,0.28)]"
                   />
                 </span>
                 <div>

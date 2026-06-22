@@ -25,6 +25,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sculptverse.in"),
   title: {
     default: "SculptVerse — Transforming Spaces Into Living Art",
     template: "%s | SculptVerse",
@@ -46,17 +47,26 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
+    url: "/",
     siteName: "SculptVerse",
     title: "SculptVerse — Transforming Spaces Into Living Art",
     description:
       "Hyderabad-based custom cement, FRP, metal and landscape sculptures for memorable spaces.",
-    images: [{ url: "/images/image copy 8.png", width: 1200, height: 630 }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SculptVerse custom giraffe sculptures in a landscaped garden",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SculptVerse — Transforming Spaces Into Living Art",
     description:
       "Premium custom cement, metal & landscape sculptures for resorts, villas, parks & schools.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

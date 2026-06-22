@@ -346,6 +346,111 @@ main {
   transition: opacity var(--duration-normal) var(--ease-smooth);
 }
 
+.image-card h3,
+.image-card svg {
+  transition: transform 320ms var(--ease-smooth), color 320ms var(--ease-smooth);
+}
+
+.image-card:hover h3 {
+  transform: translateX(0.3rem);
+  color: var(--color-bronze-light);
+}
+
+.image-card:hover svg {
+  transform: translate(0.28rem, -0.08rem);
+}
+
+.trust-card {
+  border: 1px solid rgba(27, 71, 50, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 246, 235, 0.92));
+}
+
+.trust-icon {
+  color: #b47518;
+  border: 1px solid rgba(180, 117, 24, 0.42);
+  background: rgba(180, 117, 24, 0.08);
+  box-shadow:
+    0 10px 24px rgba(180, 117, 24, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.trust-card-title {
+  color: var(--color-charcoal);
+}
+
+.trust-card-copy {
+  color: var(--color-charcoal-light);
+}
+
+.portfolio-showcase-header {
+  background: linear-gradient(
+    to bottom,
+    var(--color-cream) 0%,
+    color-mix(in oklch, var(--color-cream) 92%, transparent) 58%,
+    transparent 100%
+  );
+}
+
+.portfolio-showcase-link {
+  color: var(--color-forest);
+}
+
+.portfolio-showcase-link:hover {
+  color: var(--color-bronze);
+}
+
+html[data-theme="night"] .trust-card,
+body.theme-night .trust-card {
+  border-color: rgba(216, 171, 82, 0.22);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(216, 171, 82, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(20, 43, 32, 0.96), rgba(13, 32, 23, 0.98));
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="night"] .trust-icon,
+body.theme-night .trust-icon {
+  color: #f1c66b;
+  border-color: rgba(241, 198, 107, 0.66);
+  background: rgba(241, 198, 107, 0.08);
+  box-shadow:
+    0 14px 34px rgba(216, 171, 82, 0.14),
+    0 0 0 1px rgba(255, 231, 166, 0.08) inset;
+}
+
+html[data-theme="night"] .trust-card-title,
+body.theme-night .trust-card-title {
+  color: rgba(255, 250, 238, 0.96);
+}
+
+html[data-theme="night"] .trust-card-copy,
+body.theme-night .trust-card-copy {
+  color: rgba(232, 226, 211, 0.72);
+}
+
+html[data-theme="night"] .portfolio-showcase-header,
+body.theme-night .portfolio-showcase-header {
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 24, 16, 0.98) 0%,
+    rgba(7, 24, 16, 0.86) 52%,
+    rgba(7, 24, 16, 0) 100%
+  );
+}
+
+html[data-theme="night"] .portfolio-showcase-link,
+body.theme-night .portfolio-showcase-link {
+  color: rgba(216, 171, 82, 0.95);
+}
+
+html[data-theme="night"] .portfolio-showcase-link:hover,
+body.theme-night .portfolio-showcase-link:hover {
+  color: rgba(255, 248, 223, 0.96);
+}
+
 /* ── Section Styling ── */
 .section-padding {
   padding-block: var(--spacing-section);
@@ -495,6 +600,27 @@ body.theme-night .text-charcoal {
 html[data-theme="night"] .text-charcoal-light,
 body.theme-night .text-charcoal-light {
   color: rgba(232, 226, 211, 0.68) !important;
+}
+
+body.theme-night input::placeholder,
+body.theme-night textarea::placeholder,
+html[data-theme="night"] input::placeholder,
+html[data-theme="night"] textarea::placeholder {
+  color: rgba(232, 226, 211, 0.48) !important;
+  opacity: 1;
+}
+
+body.theme-night input,
+body.theme-night textarea,
+body.theme-night select {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: rgba(250, 246, 235, 0.92) !important;
+}
+
+body.theme-clay input::placeholder,
+body.theme-clay textarea::placeholder {
+  color: rgba(58, 43, 31, 0.5) !important;
+  opacity: 1;
 }
 
 html[data-theme="night"] .shadow-subtle,

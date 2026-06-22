@@ -1,55 +1,21 @@
-"use client";
-
-import { useRef, useEffect } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { pricingTiers } from "@/data/pricing";
 import { Check, Star } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function PricingOverview() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.from(".pricing-card", {
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-          opacity: 0,
-          y: 36,
-          scale: 0.96,
-          stagger: 0.1,
-          duration: 0.65,
-          ease: "power3.out",
-        });
-      });
-      return () => mm.revert();
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
-      className="bg-warm-white px-[clamp(1rem,5vw,4rem)] py-12 md:py-20 lg:py-24"
+      className="bg-warm-white px-[clamp(1rem,5vw,4rem)] py-10 md:py-14 lg:py-16"
       id="pricing-overview"
     >
       <div className="container-wide">
         {/* Section Header */}
-        <div className="mb-9 text-center md:mb-10">
-          <p className="text-label mb-3">Investment</p>
-          <h2 className="heading-section text-3xl md:text-4xl lg:text-5xl mb-4">
+        <div className="mx-auto mb-7 max-w-3xl text-center md:mb-8">
+          <p className="text-label mb-2">Investment</p>
+          <h2 className="heading-section mb-3 text-3xl md:text-4xl lg:text-5xl">
             Transparent Pricing
           </h2>
-          <div className="divider mx-auto mb-6" />
+          <div className="divider mx-auto mb-4" />
           <p className="text-charcoal-light max-w-xl mx-auto">
             Every sculpture is quoted by size, material, detailing, transport,
             and site needs — so you pay for the work your idea actually needs.
@@ -57,7 +23,7 @@ export function PricingOverview() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
           {pricingTiers.map((tier) => (
             <div
               key={tier.id}

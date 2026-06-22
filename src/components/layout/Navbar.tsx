@@ -85,8 +85,8 @@ export function Navbar() {
     >
       <nav className="container-wide flex items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link href="/" className="group flex items-center gap-3" id="nav-logo" aria-label="SculptVerse home">
-          <span className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-sm bg-white shadow-subtle md:h-12 md:w-12">
-            <Image src="/logo.png" alt="SculptVerse logo" fill sizes="48px" className="object-contain p-1" priority />
+          <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-xl border border-white/45 bg-white/95 shadow-[0_8px_24px_rgba(0,0,0,0.14)] ring-1 ring-forest/10 transition-all duration-300 group-hover:scale-105 md:h-11 md:w-11">
+            <Image src="/logo-mark.png" alt="SculptVerse logo" fill sizes="44px" className="object-contain p-1.5" priority />
           </span>
           <span className="hidden sm:block text-lg font-bold tracking-tight md:text-xl" style={{ fontFamily: "var(--font-heading)" }}>
             <span className={scrolled || isOpen ? "text-forest" : "text-white"}>Sculpt</span>
