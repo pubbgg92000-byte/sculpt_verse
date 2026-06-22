@@ -19,20 +19,29 @@ export function PortfolioShowcase() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const track = trackRef.current!;
-      const scrollWidth = track.scrollWidth - track.clientWidth;
+      const mm = gsap.matchMedia();
 
-      gsap.to(track, {
-        x: -scrollWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${scrollWidth}`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
+      mm.add("(min-width: 768px)", () => {
+        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+
+        const animation = gsap.to(track, {
+          x: () => -distance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => `+=${distance()}`,
+            pin: true,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          },
+        });
+
+        return () => animation.kill();
       });
+
+      return () => mm.revert();
     }, sectionRef);
 
     return () => ctx.revert();
@@ -41,11 +50,11 @@ export function PortfolioShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-cream"
+      className="relative overflow-hidden bg-cream md:h-screen"
       id="portfolio-showcase"
     >
       {/* Section Header - pinned */}
-      <div className="absolute top-0 left-0 right-0 z-10 pt-12 pb-4 px-6 lg:px-10 bg-gradient-to-b from-cream via-cream to-transparent">
+      <div className="relative z-10 px-5 pb-4 pt-16 sm:px-8 md:absolute md:left-0 md:right-0 md:top-0 md:px-6 md:pt-12 lg:px-10 bg-gradient-to-b from-cream via-cream to-transparent">
         <div className="container-wide flex items-end justify-between">
           <div>
             <p className="text-label mb-2">Our Work</p>
@@ -66,14 +75,13 @@ export function PortfolioShowcase() {
       {/* Horizontal Scroll Track */}
       <div
         ref={trackRef}
-        className="absolute top-0 left-0 h-full flex items-center gap-6 px-6 lg:px-10 pt-28"
-        style={{ width: `${featured.length * 480 + 100}px` }}
+        className="relative flex w-full flex-col gap-5 px-5 pb-16 pt-3 sm:px-8 md:absolute md:left-0 md:top-0 md:h-full md:w-max md:flex-row md:items-center md:gap-6 md:px-6 md:pb-0 md:pt-28 lg:px-10"
       >
         {featured.map((project) => (
           <Link
             key={project.id}
             href={`/portfolio/${project.slug}`}
-            className="group relative flex-shrink-0 w-[380px] md:w-[440px] h-[65vh] rounded-2xl overflow-hidden"
+            className="group relative h-[420px] w-full flex-shrink-0 overflow-hidden rounded-2xl sm:h-[500px] md:h-[65vh] md:w-[440px]"
           >
             <Image
               src={project.images[0]}
@@ -115,7 +123,7 @@ export function PortfolioShowcase() {
         {/* View All Card */}
         <Link
           href="/portfolio"
-          className="flex-shrink-0 w-[300px] h-[65vh] rounded-2xl bg-forest flex flex-col items-center justify-center gap-4 group hover:bg-forest-light transition-colors duration-300"
+          className="group flex h-44 w-full flex-shrink-0 flex-col items-center justify-center gap-3 rounded-2xl bg-forest transition-colors duration-300 hover:bg-forest-light md:h-[65vh] md:w-[300px] md:gap-4"
         >
           <div className="w-16 h-16 rounded-full border-2 border-warm-white/30 flex items-center justify-center group-hover:border-warm-white/60 transition-colors">
             <ArrowRight className="w-7 h-7 text-warm-white group-hover:translate-x-1 transition-transform" />

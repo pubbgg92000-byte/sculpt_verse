@@ -3,12 +3,9 @@
 import { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
 import { getWhatsAppLink } from "@/lib/utils";
-
-gsap.registerPlugin(SplitText);
 
 const HeroScene = dynamic(
   () => import("@/components/three/HeroScene").then((mod) => mod.HeroScene),
@@ -16,71 +13,21 @@ const HeroScene = dynamic(
 );
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const ctx = gsap.context(() => {
-      // Split heading text
-      const split = new SplitText(headingRef.current!, {
-        type: "chars,words",
-      });
-
-      const tl = gsap.timeline({ delay: 0.5 });
-
-      // Animate heading characters
-      tl.from(split.chars, {
+      gsap.from(".hero-reveal", {
         opacity: 0,
-        y: 60,
-        rotateX: -90,
-        stagger: 0.03,
-        duration: 0.8,
-        ease: "back.out(1.7)",
+        y: 34,
+        stagger: 0.11,
+        duration: 0.85,
+        delay: 0.25,
+        ease: "power3.out",
       });
-
-      // Animate subheadline
-      tl.from(
-        subRef.current!,
-        {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.3"
-      );
-
-      // Animate CTAs
-      tl.from(
-        ctaRef.current!.children,
-        {
-          opacity: 0,
-          y: 20,
-          stagger: 0.15,
-          duration: 0.6,
-          ease: "power3.out",
-        },
-        "-=0.4"
-      );
-
-      // Animate scroll indicator
-      tl.from(
-        scrollRef.current!,
-        {
-          opacity: 0,
-          y: -20,
-          duration: 0.6,
-          ease: "power3.out",
-        },
-        "-=0.2"
-      );
-
-      return () => {
-        split.revert();
-      };
     }, containerRef);
 
     return () => ctx.revert();
@@ -90,73 +37,49 @@ export function Hero() {
     <section
       ref={containerRef}
       id="hero-section"
-      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative isolate min-h-[680px] h-[100svh] max-h-[980px] overflow-hidden bg-[#12271f]"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-forest-dark to-charcoal z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(171,119,52,0.23),transparent_30%),linear-gradient(120deg,#10251d_0%,#18362a_55%,#0c1814_100%)]" />
+      <div className="absolute inset-y-0 right-0 z-[1] w-full lg:w-[64%]">
+        <HeroScene />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#10251d] via-[#10251d]/75 to-transparent lg:bg-gradient-to-r lg:from-[#132b22] lg:via-transparent lg:to-transparent" />
+      </div>
 
-      {/* Three.js Scene */}
-      <HeroScene />
+      <div className="relative z-[2] container-wide mx-auto flex h-full items-end px-5 pb-20 pt-28 sm:px-8 sm:pb-24 lg:items-center lg:px-10 lg:pb-0">
+        <div ref={contentRef} className="max-w-[690px] text-center lg:text-left">
+          <div className="hero-reveal mb-5 inline-flex items-center gap-3 rounded-full border border-bronze-light/25 bg-black/15 px-4 py-2 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-bronze-light" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-bronze-light sm:text-xs">
+              Sculpted by hand · Built to endure
+            </span>
+          </div>
 
-      {/* Overlay gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
+          <h1 className="hero-reveal text-[clamp(2.65rem,9.5vw,4.5rem)] font-bold leading-[0.98] tracking-[-0.035em] text-warm-white lg:text-[5.6rem]" style={{ fontFamily: "var(--font-heading)" }}>
+            We turn imagination into <span className="text-bronze-light">monumental art.</span>
+          </h1>
 
-      {/* Content */}
-      <div className="relative z-[2] text-center px-6 max-w-5xl mx-auto">
-        {/* Label */}
-        <p className="text-label text-bronze-light mb-6 tracking-[0.25em]">
-          Premium Custom Sculptures
-        </p>
+          <p className="hero-reveal mx-auto mt-6 max-w-xl text-sm leading-6 text-warm-white/68 sm:text-base sm:leading-7 lg:mx-0 lg:text-lg">
+            Bespoke cement, metal and landscape sculptures crafted for resorts,
+            villas, parks and unforgettable public spaces.
+          </p>
 
-        {/* Main Heading */}
-        <h1
-          ref={headingRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-warm-white mb-6 leading-[1.05]"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          Transforming Spaces Into Living Art
-        </h1>
-
-        {/* Subheadline */}
-        <p
-          ref={subRef}
-          className="text-lg md:text-xl text-warm-white/70 max-w-2xl mx-auto mb-10"
-          style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
-        >
-          Custom Cement, Metal & Landscape Sculptures For Resorts, Villas,
-          Parks & Schools
-        </p>
-
-        {/* CTAs */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href={getWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-bronze text-sm px-8 py-4"
-            id="hero-cta-primary"
-          >
-            Get Free Quote
-          </a>
-          <Link
-            href="/portfolio"
-            className="btn-secondary text-sm px-8 py-4 border-warm-white/40 text-warm-white hover:bg-warm-white hover:text-charcoal"
-            id="hero-cta-secondary"
-          >
-            View Portfolio
-          </Link>
+          <div className="hero-reveal mt-8 flex flex-col items-stretch justify-center gap-3 min-[420px]:flex-row min-[420px]:items-center lg:justify-start">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-bronze min-h-12 px-7 text-xs">
+              Start a sculpture
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <Link href="/portfolio" className="inline-flex min-h-12 items-center justify-center rounded-sm border-2 border-warm-white/35 bg-warm-white/5 px-7 text-xs font-semibold uppercase tracking-[0.05em] text-warm-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-warm-white hover:text-charcoal hover:shadow-elevated">
+              Explore our work
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div
-        ref={scrollRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-warm-white/50 uppercase tracking-widest">
-          Scroll
+      <div className="absolute bottom-6 right-6 z-[2] hidden items-center gap-3 lg:flex">
+        <span className="text-[10px] uppercase tracking-[0.25em] text-warm-white/45">Discover</span>
+        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-white/20">
+          <ArrowDown className="h-4 w-4 animate-bounce-gentle text-warm-white/60" />
         </span>
-        <ArrowDown className="w-5 h-5 text-warm-white/50 animate-bounce-gentle" />
       </div>
     </section>
   );

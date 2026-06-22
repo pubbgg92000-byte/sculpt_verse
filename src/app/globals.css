@@ -84,6 +84,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -91,7 +93,13 @@ body {
   color: var(--color-charcoal);
   background-color: var(--color-warm-white);
   line-height: 1.7;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -356,6 +364,29 @@ body {
 .container-wide {
   max-width: 90rem;
   margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --spacing-section: 4.25rem;
+    --spacing-section-sm: 3.25rem;
+  }
+
+  .section-padding,
+  .section-padding-sm {
+    padding-inline: 1.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --spacing-section: 3.75rem;
+  }
+
+  .section-padding,
+  .section-padding-sm {
+    padding-inline: 1rem;
+  }
 }
 
 /* ── Divider ── */

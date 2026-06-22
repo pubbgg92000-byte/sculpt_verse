@@ -98,12 +98,12 @@ export function ProcessSection() {
   return (
     <section
       ref={sectionRef}
-      className="section-padding bg-warm-white"
+      className="section-padding overflow-hidden bg-warm-white"
       id="process-section"
     >
       <div className="container-narrow">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="mb-12 text-center md:mb-20">
           <p className="text-label mb-3">How We Work</p>
           <h2 className="heading-section text-3xl md:text-4xl lg:text-5xl mb-4">
             From Vision to Reality
@@ -128,7 +128,7 @@ export function ProcessSection() {
           </div>
 
           {/* Steps */}
-          <div className="space-y-12 md:space-y-16">
+          <div className="space-y-8 md:space-y-16">
             {steps.map((step, index) => {
               const Icon = step.icon;
               const isEven = index % 2 === 0;
@@ -145,7 +145,7 @@ export function ProcessSection() {
 
                   {/* Content */}
                   <div className={`flex-1 pl-12 md:pl-0 ${isEven ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                    <div className={`bg-white rounded-xl p-6 shadow-card hover:shadow-elevated transition-shadow duration-300 ${isEven ? "md:ml-auto" : ""} max-w-md`}>
+                    <div className={`max-w-md rounded-xl bg-white p-5 shadow-card transition-shadow duration-300 hover:shadow-elevated sm:p-6 ${isEven ? "md:ml-auto" : ""}`}>
                       <div className={`flex items-center gap-3 mb-3 ${isEven ? "md:flex-row-reverse" : ""}`}>
                         <div className="w-10 h-10 rounded-lg bg-forest/10 flex items-center justify-center shrink-0">
                           <Icon className="w-5 h-5 text-forest" />
