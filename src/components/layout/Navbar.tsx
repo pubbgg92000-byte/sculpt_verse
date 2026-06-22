@@ -76,9 +76,6 @@ export function Navbar() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const ActiveThemeIcon = themes.find((item) => item.id === theme)?.Icon ?? Sun;
-  const activeThemeLabel = themes.find((item) => item.id === theme)?.label ?? "Forest Day";
-
   return (
     <header
       id="main-navbar"
@@ -128,10 +125,10 @@ export function Navbar() {
             className={`grid h-10 w-10 place-items-center rounded-full border transition-all duration-300 hover:rotate-12 ${
               scrolled || isOpen ? "border-forest/15 bg-forest/5 text-forest" : "border-white/20 bg-white/10 text-white"
             }`}
-            aria-label={`Switch theme. Current theme is ${activeThemeLabel}`}
-            title={`Theme: ${activeThemeLabel}`}
+            aria-label="Switch site theme"
+            title="Switch site theme"
           >
-            <ActiveThemeIcon className="h-4 w-4" />
+            <Palette className="h-4 w-4" />
           </button>
 
           <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-primary !hidden px-5 py-2.5 text-[10px] xl:!inline-flex">
