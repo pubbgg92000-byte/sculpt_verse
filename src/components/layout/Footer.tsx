@@ -28,14 +28,16 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center gap-3 mb-6">
-                <Image
-                  src="/logo.png"
-                  alt="SculptVerse"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 brightness-0 invert"
-                />
+              <Link href="/" className="mb-6 flex items-center gap-4">
+                <span className="relative grid h-20 w-20 place-items-center rounded-2xl border border-bronze-light/25 bg-[radial-gradient(circle,rgba(196,164,90,0.22),transparent_65%)] shadow-[0_0_35px_rgba(196,164,90,0.2)]">
+                  <Image
+                    src="/logo-cutout.png"
+                    alt="SculptVerse"
+                    width={96}
+                    height={76}
+                    className="h-16 w-16 object-contain drop-shadow-[0_8px_18px_rgba(196,164,90,0.25)]"
+                  />
+                </span>
                 <div>
                   <span
                     className="text-xl font-bold text-warm-white"
@@ -133,9 +135,9 @@ export function Footer() {
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-bronze-light mt-0.5 shrink-0" />
                   <span className="text-sm text-warm-white/60">
-                    Workshop: Tamil Nadu, India
+                    Hyderabad, Telangana, India
                     <br />
-                    Delivery: Pan-India
+                    Custom sculptures for homes, parks & businesses
                   </span>
                 </li>
               </ul>

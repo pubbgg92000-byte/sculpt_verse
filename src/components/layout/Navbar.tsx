@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Moon, Sun, ArrowUpRight } from "lucide-react";
+import { Menu, X, Phone, Moon, Sun, Palette, ArrowUpRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/utils";
 
 const navLinks = [
@@ -17,16 +17,27 @@ const navLinks = [
   { href: "/contact", label: "Contact", index: "07" },
 ];
 
+type ThemeName = "day" | "clay" | "night";
+
+const themes: { id: ThemeName; label: string; description: string; Icon: typeof Sun }[] = [
+  { id: "day", label: "Forest Day", description: "Fresh green daylight", Icon: Sun },
+  { id: "clay", label: "Warm Clay", description: "Earthy studio glow", Icon: Palette },
+  { id: "night", label: "Night Studio", description: "Deep gallery mood", Icon: Moon },
+];
+
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<"day" | "night">("day");
+  const [theme, setTheme] = useState<ThemeName>("day");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("sculptverse-theme");
-    const nextTheme = saved === "night" ? "night" : "day";
+    const nextTheme: ThemeName = saved === "night" || saved === "clay" ? saved : "day";
     document.documentElement.dataset.theme = nextTheme;
+    document.body.dataset.theme = nextTheme;
+    document.body.classList.remove("theme-day", "theme-clay", "theme-night");
+    document.body.classList.add(`theme-${nextTheme}`);
     const frame = window.requestAnimationFrame(() => setTheme(nextTheme));
     return () => window.cancelAnimationFrame(frame);
   }, []);
@@ -46,14 +57,27 @@ export function Navbar() {
   }, [isOpen]);
 
   const toggleTheme = () => {
-    const next = theme === "day" ? "night" : "day";
+    const currentIndex = themes.findIndex((item) => item.id === theme);
+    const next = themes[(currentIndex + 1) % themes.length].id;
+    selectTheme(next);
+  };
+
+  const selectTheme = (next: ThemeName) => {
     setTheme(next);
-    document.documentElement.dataset.theme = next;
-    window.localStorage.setItem("sculptverse-theme", next);
+    window.requestAnimationFrame(() => {
+      document.documentElement.dataset.theme = next;
+      document.body.dataset.theme = next;
+      document.body.classList.remove("theme-day", "theme-clay", "theme-night");
+      document.body.classList.add(`theme-${next}`);
+      window.localStorage.setItem("sculptverse-theme", next);
+    });
   };
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const ActiveThemeIcon = themes.find((item) => item.id === theme)?.Icon ?? Sun;
+  const activeThemeLabel = themes.find((item) => item.id === theme)?.label ?? "Forest Day";
 
   return (
     <header
@@ -104,10 +128,10 @@ export function Navbar() {
             className={`grid h-10 w-10 place-items-center rounded-full border transition-all duration-300 hover:rotate-12 ${
               scrolled || isOpen ? "border-forest/15 bg-forest/5 text-forest" : "border-white/20 bg-white/10 text-white"
             }`}
-            aria-label={`Switch to ${theme === "day" ? "night" : "day"} theme`}
-            title={`${theme === "day" ? "Night studio" : "Forest daylight"} theme`}
+            aria-label={`Switch theme. Current theme is ${activeThemeLabel}`}
+            title={`Theme: ${activeThemeLabel}`}
           >
-            {theme === "day" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <ActiveThemeIcon className="h-4 w-4" />
           </button>
 
           <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-primary !hidden px-5 py-2.5 text-[10px] xl:!inline-flex">
@@ -161,6 +185,30 @@ export function Navbar() {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-3">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/45">Choose mood</p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {themes.map(({ id, label, description, Icon }) => {
+                const selected = id === theme;
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => selectTheme(id)}
+                    className={`rounded-xl border p-3 text-left transition-all duration-300 ${
+                      selected ? "border-bronze-light bg-bronze/20 text-white" : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/25 hover:bg-white/[0.08]"
+                    }`}
+                    aria-pressed={selected}
+                  >
+                    <Icon className="mb-2 h-4 w-4 text-bronze-light" />
+                    <span className="block text-sm font-semibold">{label}</span>
+                    <span className="mt-1 block text-[11px] leading-4 text-white/45">{description}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-auto grid gap-3 pt-8 sm:grid-cols-2">

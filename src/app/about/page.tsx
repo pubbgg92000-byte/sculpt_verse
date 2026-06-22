@@ -7,14 +7,14 @@ import { ContactCTA } from "@/components/sections/ContactCTA";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Built by artists. Trusted by builders. Learn about SculptVerse — India's premier custom sculpture studio with 10+ years of craftsmanship experience.",
+    "Meet SculptVerse, a Hyderabad-based custom sculpture studio shaped by craft, ideas, local collaboration, and made-to-order work.",
 };
 
 const stats = [
-  { icon: Award, value: "10+", label: "Years Experience" },
-  { icon: Users, value: "500+", label: "Projects Completed" },
-  { icon: MapPin, value: "20+", label: "States Served" },
-  { icon: Clock, value: "100%", label: "On-time Delivery" },
+  { icon: Award, value: "Craft", label: "Hands-on Skill" },
+  { icon: Users, value: "Custom", label: "Made To Order" },
+  { icon: MapPin, value: "Hyd", label: "Hyderabad Based" },
+  { icon: Clock, value: "Clear", label: "Practical Timelines" },
 ];
 
 export default function AboutPage() {
@@ -39,17 +39,17 @@ export default function AboutPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-warm-white mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Built By Artists.
+            A Craft-Led Dream.
             <br />
-            Trusted By Builders.
+            Shaped Into Sculpture.
           </h1>
           <div className="divider mx-auto mb-6" />
           <p
             className="text-lg text-warm-white/60 max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
           >
-            A decade of transforming spaces with hand-sculpted artistry,
-            engineering precision, and an unwavering passion for perfection.
+            A personal passion for sculptural work, supported by practical making,
+            local collaboration, and a sincere eye for memorable spaces.
           </p>
         </div>
       </section>
@@ -86,26 +86,25 @@ export default function AboutPage() {
             <div>
               <p className="text-label mb-4">Who We Are</p>
               <h2 className="heading-section text-3xl md:text-4xl mb-6">
-                A Team of Artists, Engineers & Dreamers
+                Skill, Patience & A Practical Way To Build
               </h2>
               <div className="space-y-4 text-charcoal-light leading-relaxed">
                 <p>
-                  SculptVerse was born from a simple belief: every space has the
-                  potential to become extraordinary. What started as a small
-                  workshop with three passionate sculptors has grown into India&apos;s
-                  most trusted custom sculpture studio.
+                  SculptVerse is built around a simple belief: a good sculpture
+                  does not need to come from a huge studio. It can begin with one
+                  person&apos;s idea, a reference image, a space that needs character,
+                  and patient hands willing to shape it.
                 </p>
                 <p>
-                  Our team combines traditional sculpting techniques passed down
-                  through generations with modern engineering practices. Every
-                  piece that leaves our workshop carries the DNA of centuries-old
-                  craftsmanship, fortified by contemporary materials and methods.
+                  We plan each piece according to the client&apos;s space, budget, and
+                  material needs. For framework, fabrication, finishing, transport,
+                  or site support, we collaborate with suitable local makers and
+                  shops when a project needs extra hands.
                 </p>
                 <p>
-                  From life-sized elephant herds for nature parks to delicate
-                  peacock sculptures for wedding venues, we treat every project
-                  with the same reverence — because we believe art should be
-                  accessible, enduring, and breathtaking.
+                  The work is custom, honest, and made step by step — from small
+                  garden features to animal figures, entrance pieces, themed
+                  corners, and decorative sculptures for businesses and homes.
                 </p>
               </div>
             </div>
@@ -145,26 +144,27 @@ export default function AboutPage() {
             <div className="order-1 md:order-2">
               <p className="text-label mb-4">Our Mission</p>
               <h2 className="heading-section text-3xl md:text-4xl mb-6">
-                Crafting Landmarks From Concrete, Steel & Imagination
+                Turning Rough Ideas Into Real, Touchable Forms
               </h2>
               <div className="space-y-4 text-charcoal-light leading-relaxed">
                 <p>
-                  We don&apos;t sell statues. We create landmarks, experiences,
-                  and destination attractions. Every sculpture we craft is
-                  designed to become the most talked-about feature of your space.
+                  We don&apos;t treat sculpture as a catalogue item. We help shape a
+                  concept into something that fits the site, feels personal, and
+                  can be made with the right mix of cement, FRP, metal, paint,
+                  texture, and practical support.
                 </p>
                 <p>
-                  Our mission is to make world-class sculptural art accessible
-                  to resorts, schools, parks, and homes across India — at prices
-                  that respect your budget without compromising quality.
+                  Our aim is to make custom sculptural work approachable for homes,
+                  schools, parks, resorts, cafés, builders, and businesses — with
+                  pricing and timelines discussed clearly before work begins.
                 </p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
-                  "Custom Designs",
-                  "Pan-India Service",
-                  "Weather Resistant",
-                  "Expert Installation",
+                  "Custom Ideas",
+                  "Hyderabad Based",
+                  "Material Guidance",
+                  "Local Support",
                 ].map((item) => (
                   <div
                     key={item}

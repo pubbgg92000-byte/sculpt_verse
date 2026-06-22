@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | SculptVerse",
   },
   description:
-    "Premium custom cement, metal & landscape sculptures for resorts, villas, parks & schools. Handcrafted animal sculptures, garden features, and resort installations by master artisans.",
+    "Hyderabad-based custom sculpture studio for cement, FRP, metal and landscape sculptures for homes, parks, schools, resorts and businesses.",
   keywords: [
     "custom sculptures",
     "cement sculptures",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "SculptVerse",
     title: "SculptVerse — Transforming Spaces Into Living Art",
     description:
-      "Premium custom cement, metal & landscape sculptures for resorts, villas, parks & schools.",
+      "Hyderabad-based custom cement, FRP, metal and landscape sculptures for memorable spaces.",
     images: [{ url: "/images/image copy 8.png", width: 1200, height: 630 }],
   },
   twitter: {

@@ -135,7 +135,7 @@ export function PortfolioShowcase() {
             View All Projects
           </span>
           <span className="text-sm text-warm-white/60">
-            {featured.length}+ completed works
+            Selected sculpture ideas
           </span>
         </Link>
       </div>

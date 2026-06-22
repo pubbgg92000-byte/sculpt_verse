@@ -377,6 +377,14 @@ html[data-theme="day"] {
   --hero-glow: rgba(232, 196, 126, 0.34);
 }
 
+html[data-theme="clay"] {
+  color-scheme: light;
+  --hero-start: #5a351d;
+  --hero-mid: #916037;
+  --hero-end: #213628;
+  --hero-glow: rgba(255, 211, 129, 0.38);
+}
+
 html[data-theme="night"] {
   color-scheme: dark;
   --hero-start: #07140f;
@@ -441,9 +449,74 @@ html[data-theme="night"] .nav-surface {
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
+html[data-theme="clay"] .nav-surface {
+  background: rgba(252, 244, 231, 0.92);
+  border-bottom-color: rgba(128, 77, 34, 0.12);
+}
+
 html[data-theme="night"] .nav-surface .text-charcoal,
 html[data-theme="night"] .nav-surface .text-forest {
   color: rgba(247, 241, 228, 0.9);
+}
+
+html[data-theme="night"] body {
+  background: #08130e;
+  color: rgba(247, 241, 228, 0.92);
+}
+
+body.theme-night {
+  background: #08130e;
+  color: rgba(247, 241, 228, 0.92);
+}
+
+html[data-theme="night"] .bg-warm-white,
+body.theme-night .bg-warm-white {
+  background-color: #0b1711 !important;
+}
+
+html[data-theme="night"] .bg-cream,
+body.theme-night .bg-cream {
+  background-color: #101f17 !important;
+}
+
+html[data-theme="night"] .bg-white,
+body.theme-night .bg-white {
+  background-color: #15251b !important;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="night"] .heading-section,
+html[data-theme="night"] .text-charcoal,
+body.theme-night .heading-section,
+body.theme-night .text-charcoal {
+  color: rgba(250, 246, 235, 0.94) !important;
+}
+
+html[data-theme="night"] .text-charcoal-light,
+body.theme-night .text-charcoal-light {
+  color: rgba(232, 226, 211, 0.68) !important;
+}
+
+html[data-theme="night"] .shadow-subtle,
+html[data-theme="night"] .shadow-card,
+html[data-theme="night"] .shadow-elevated,
+body.theme-night .shadow-subtle,
+body.theme-night .shadow-card,
+body.theme-night .shadow-elevated {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.26), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+html[data-theme="night"] .divider {
+  background: linear-gradient(90deg, var(--color-forest-light), var(--color-bronze-light));
+}
+
+.hero-image-card {
+  animation: hero-card-float 7s ease-in-out infinite alternate;
+}
+
+@keyframes hero-card-float {
+  from { transform: translate3d(0, 0, 0) rotate(var(--tw-rotate, 0deg)); }
+  to { transform: translate3d(0.45rem, -0.75rem, 0) rotate(var(--tw-rotate, 0deg)); }
 }
 
 @media (max-width: 767px) {

@@ -26,35 +26,35 @@ const steps = [
     number: "02",
     title: "Design",
     description:
-      "Our artists create detailed sketches and 3D previews. You approve the design before any work begins.",
+      "We shape the idea through references, sketches, simple previews, or material samples before work begins.",
     icon: Pencil,
   },
   {
     number: "03",
     title: "Steel Framework",
     description:
-      "A robust galvanized steel skeleton is hand-welded to form the core structure for strength and longevity.",
+      "For larger work, a suitable inner frame or support structure is planned with local fabrication help where needed.",
     icon: Wrench,
   },
   {
     number: "04",
     title: "Concrete Sculpting",
     description:
-      "Layer by layer, cement is applied and hand-sculpted to achieve photorealistic detail and form.",
+      "The form is built up patiently, then shaped, carved, textured, and refined according to the approved direction.",
     icon: Hammer,
   },
   {
     number: "05",
     title: "Finishing",
     description:
-      "Multiple coats of weather-resistant paint and UV coatings are applied for a stunning, lasting finish.",
+      "Paint, texture, sealers, and touch-ups are selected according to the look, budget, and outdoor exposure.",
     icon: Paintbrush,
   },
   {
     number: "06",
     title: "Installation",
     description:
-      "Our team travels to your site for professional installation, including foundation work and final touches.",
+      "Delivery, base fixing, and site support are discussed clearly based on size, location, and installation needs.",
     icon: Truck,
   },
 ];

@@ -298,7 +298,7 @@ export default function ContactPage() {
                         hello@sculptverse.in
                       </p>
                       <p className="text-sm text-charcoal-light">
-                        We respond within 24 hours
+                        We reply as soon as possible
                       </p>
                     </div>
                   </a>
@@ -312,10 +312,10 @@ export default function ContactPage() {
                         Workshop Location
                       </p>
                       <p className="text-sm text-charcoal-light">
-                        Tamil Nadu, India
+                        Hyderabad, Telangana, India
                         <br />
                         <span className="text-xs text-charcoal-light/60">
-                          Delivery & Installation: Pan-India
+                          Transport and setup discussed per project
                         </span>
                       </p>
                     </div>

@@ -58,14 +58,14 @@ export function ContactCTA() {
           className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-warm-white mb-6 leading-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          Let&apos;s Create Something Extraordinary Together
+          Let&apos;s Shape Something Beautiful For Your Space
         </h2>
         <p
           className="text-lg md:text-xl text-warm-white/60 max-w-2xl mx-auto mb-10"
           style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
         >
-          From a simple garden sculpture to a complete resort landscape — we
-          bring your vision to life with passion and precision.
+          Share a photo, sketch, reference, or rough idea. We&apos;ll help you explore
+          the right size, material, finish, and budget before work begins.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
@@ -80,7 +80,7 @@ export function ContactCTA() {
             href={getWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary border-warm-white/40 text-warm-white hover:bg-warm-white hover:text-forest text-sm px-8 py-4 flex items-center gap-2"
+            className="inline-flex items-center justify-center gap-2 rounded-sm border-2 border-white/35 bg-white/10 px-8 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-forest hover:shadow-elevated"
           >
             <MessageCircle className="w-4 h-4" />
             WhatsApp Us
@@ -95,7 +95,7 @@ export function ContactCTA() {
         </div>
 
         <p className="text-xs text-warm-white/30">
-          Free consultation • No commitment • Pan-India service
+          Hyderabad based • Custom work • Clear discussion before quotation
         </p>
       </div>
     </section>

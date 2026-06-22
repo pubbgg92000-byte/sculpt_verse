@@ -25,7 +25,7 @@ export default function ProcessPage() {
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            Every masterpiece follows our proven six-step journey — from your
+            Every custom piece follows a practical six-step journey — from your
             first call to the final installation. No surprises, just excellence.
           </p>
         </div>

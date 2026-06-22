@@ -25,8 +25,8 @@ export default function PricingPage() {
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            Premium quality at fair prices. Every project includes design,
-            fabrication, finishing, and professional installation.
+            Fair, project-wise pricing for custom sculpture work. Cost depends on
+            size, material, finish, transport, and installation needs.
           </p>
         </div>
       </section>
@@ -188,8 +188,8 @@ export default function PricingPage() {
             Ready to Get Started?
           </h2>
           <p className="text-warm-white/60 mb-8 max-w-lg mx-auto">
-            Get a free, no-obligation quote for your project. Our team will
-            respond within 24 hours.
+            Send your reference, size idea, location, and budget range. We&apos;ll
+            discuss the practical options before sharing a quotation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -202,7 +202,7 @@ export default function PricingPage() {
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary border-warm-white/40 text-warm-white hover:bg-warm-white hover:text-forest text-sm px-8 py-4 flex items-center gap-2"
+              className="inline-flex items-center justify-center gap-2 rounded-sm border-2 border-white/35 bg-white/10 px-8 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-forest hover:shadow-elevated"
             >
               <MessageCircle className="w-4 h-4" />
               WhatsApp Us

@@ -18,38 +18,38 @@ gsap.registerPlugin(ScrollTrigger);
 const features = [
   {
     icon: Palette,
-    title: "Custom Designs",
-    description: "Every sculpture is uniquely designed to match your vision and space.",
+    title: "Idea-Friendly Design",
+    description: "We can begin with a rough photo, sketch, or reference and shape it into a practical sculpture plan.",
   },
   {
     icon: Shield,
-    title: "Weather Resistant",
-    description: "Built to withstand Indian monsoons, extreme heat, and coastal conditions.",
+    title: "Outdoor-Ready Choices",
+    description: "Material, coating, and base decisions are suggested according to where the piece will live.",
   },
   {
     icon: Wrench,
-    title: "Steel Reinforced",
-    description: "Galvanized steel framework ensures structural integrity for decades.",
+    title: "Local Fabrication Support",
+    description: "For metal, frame, transport, and site work, we coordinate with suitable local makers when needed.",
   },
   {
     icon: Hand,
-    title: "Handcrafted Finish",
-    description: "Every detail is hand-sculpted and painted by master artisans.",
+    title: "Hand-Shaped Character",
+    description: "The goal is not factory sameness — it is a sculpture with presence, personality, and care.",
   },
   {
     icon: MapPin,
-    title: "On-site Installation",
-    description: "Our professional team handles delivery and installation pan-India.",
+    title: "Hyderabad Based",
+    description: "Easy coordination for Hyderabad and Telangana projects, with transport discussions for other locations.",
   },
   {
     icon: DollarSign,
-    title: "Affordable Pricing",
-    description: "Premium quality at competitive prices with flexible payment options.",
+    title: "Budget-Aware Planning",
+    description: "We suggest size, material, and finish options according to your budget instead of forcing one package.",
   },
   {
     icon: Clock,
-    title: "Long Lasting",
-    description: "Our sculptures are built to last 15-25+ years with minimal maintenance.",
+    title: "Care Guidance",
+    description: "You get simple guidance for cleaning, repainting, touch-ups, and keeping outdoor pieces looking good.",
   },
 ];
 

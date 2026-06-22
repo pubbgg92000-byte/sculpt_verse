@@ -51,8 +51,8 @@ export function PricingOverview() {
           </h2>
           <div className="divider mx-auto mb-6" />
           <p className="text-charcoal-light max-w-xl mx-auto">
-            Quality craftsmanship at fair prices. Every project includes design,
-            fabrication, finishing, and installation.
+            Every sculpture is quoted by size, material, detailing, transport,
+            and site needs — so you pay for the work your idea actually needs.
           </p>
         </div>
 
