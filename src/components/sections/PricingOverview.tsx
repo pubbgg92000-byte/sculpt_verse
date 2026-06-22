@@ -14,19 +14,23 @@ export function PricingOverview() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".pricing-card", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 50,
-        scale: 0.9,
-        stagger: 0.15,
-        duration: 0.7,
-        ease: "back.out(1.4)",
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".pricing-card", {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 36,
+          scale: 0.96,
+          stagger: 0.1,
+          duration: 0.65,
+          ease: "power3.out",
+        });
       });
+      return () => mm.revert();
     }, sectionRef);
 
     return () => ctx.revert();
@@ -35,12 +39,12 @@ export function PricingOverview() {
   return (
     <section
       ref={sectionRef}
-      className="section-padding bg-warm-white"
+      className="bg-warm-white px-[clamp(1rem,5vw,4rem)] py-12 md:py-20 lg:py-24"
       id="pricing-overview"
     >
       <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="mb-9 text-center md:mb-10">
           <p className="text-label mb-3">Investment</p>
           <h2 className="heading-section text-3xl md:text-4xl lg:text-5xl mb-4">
             Transparent Pricing
@@ -53,11 +57,11 @@ export function PricingOverview() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {pricingTiers.map((tier) => (
             <div
               key={tier.id}
-              className={`pricing-card relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 ${
+              className={`pricing-card relative rounded-2xl p-5 transition-all duration-300 hover:-translate-y-2 sm:p-6 ${
                 tier.popular
                   ? "bg-forest text-warm-white shadow-dramatic ring-2 ring-bronze"
                   : "bg-white shadow-card hover:shadow-elevated"

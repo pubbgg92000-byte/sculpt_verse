@@ -37,9 +37,11 @@ export function Hero() {
     <section
       ref={containerRef}
       id="hero-section"
-      className="relative isolate min-h-[680px] h-[100svh] max-h-[980px] overflow-hidden bg-[#12271f]"
+      className="hero-environment relative isolate min-h-[680px] h-[100svh] max-h-[980px] overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(171,119,52,0.23),transparent_30%),linear-gradient(120deg,#10251d_0%,#18362a_55%,#0c1814_100%)]" />
+      <div className="hero-ambient absolute inset-0" />
+      <div className="hero-orb hero-orb-one" />
+      <div className="hero-orb hero-orb-two" />
       <div className="absolute inset-y-0 right-0 z-[1] w-full lg:w-[64%]">
         <HeroScene />
         <div className="absolute inset-0 bg-gradient-to-t from-[#10251d] via-[#10251d]/75 to-transparent lg:bg-gradient-to-r lg:from-[#132b22] lg:via-transparent lg:to-transparent" />
@@ -72,11 +74,15 @@ export function Hero() {
               Explore our work
             </Link>
           </div>
+
+          <div className="hero-reveal mt-7 flex items-center justify-center gap-5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/45 lg:justify-start">
+            <span>Cement</span><span className="h-1 w-1 rounded-full bg-bronze-light" /><span>Metal</span><span className="h-1 w-1 rounded-full bg-bronze-light" /><span>Landscape</span>
+          </div>
         </div>
       </div>
 
       <div className="absolute bottom-6 right-6 z-[2] hidden items-center gap-3 lg:flex">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-warm-white/45">Discover</span>
+        <span className="text-[10px] uppercase tracking-[0.25em] text-warm-white/45">Move cursor · Discover</span>
         <span className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-white/20">
           <ArrowDown className="h-4 w-4 animate-bounce-gentle text-warm-white/60" />
         </span>

@@ -95,6 +95,7 @@ body {
   line-height: 1.7;
   max-width: 100%;
   overflow-x: clip;
+  transition: background-color 500ms ease, color 500ms ease;
 }
 
 main {
@@ -366,10 +367,89 @@ main {
   margin-inline: auto;
 }
 
+/* ── Day / night studio ambience ── */
+:root,
+html[data-theme="day"] {
+  color-scheme: light;
+  --hero-start: #173f2d;
+  --hero-mid: #426b4d;
+  --hero-end: #193126;
+  --hero-glow: rgba(232, 196, 126, 0.34);
+}
+
+html[data-theme="night"] {
+  color-scheme: dark;
+  --hero-start: #07140f;
+  --hero-mid: #10251c;
+  --hero-end: #060c09;
+  --hero-glow: rgba(184, 112, 36, 0.28);
+}
+
+.hero-environment {
+  background: var(--hero-start);
+  transition: background-color 700ms ease;
+}
+
+.hero-ambient {
+  background:
+    radial-gradient(circle at 72% 35%, var(--hero-glow), transparent 31%),
+    linear-gradient(120deg, var(--hero-start) 0%, var(--hero-mid) 57%, var(--hero-end) 100%);
+  transition: background 700ms ease;
+}
+
+.hero-orb {
+  position: absolute;
+  z-index: 1;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(2px);
+  opacity: 0.22;
+  animation: hero-drift 10s ease-in-out infinite alternate;
+}
+
+.hero-orb-one {
+  width: clamp(16rem, 32vw, 34rem);
+  height: clamp(16rem, 32vw, 34rem);
+  right: -8%;
+  top: -12%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-orb-two {
+  width: clamp(10rem, 20vw, 20rem);
+  height: clamp(10rem, 20vw, 20rem);
+  left: 42%;
+  bottom: -12%;
+  background: rgba(197, 152, 78, 0.1);
+  animation-delay: -4s;
+}
+
+@keyframes hero-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-1.5rem, 1rem, 0) scale(1.06); }
+}
+
+.nav-surface {
+  background: rgba(250, 248, 242, 0.92);
+  border-bottom: 1px solid rgba(33, 76, 55, 0.08);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+html[data-theme="night"] .nav-surface {
+  background: rgba(10, 25, 18, 0.94);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="night"] .nav-surface .text-charcoal,
+html[data-theme="night"] .nav-surface .text-forest {
+  color: rgba(247, 241, 228, 0.9);
+}
+
 @media (max-width: 767px) {
   :root {
-    --spacing-section: 4.25rem;
-    --spacing-section-sm: 3.25rem;
+    --spacing-section: 3.25rem;
+    --spacing-section-sm: 2.75rem;
   }
 
   .section-padding,

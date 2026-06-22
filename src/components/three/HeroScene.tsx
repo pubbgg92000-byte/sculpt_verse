@@ -115,9 +115,32 @@ function BirdSculpture() {
 function SculptureGallery() {
   const { viewport } = useThree();
   const mobile = viewport.width < 6;
+  const gallery = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (!gallery.current) return;
+    gallery.current.rotation.y = THREE.MathUtils.damp(
+      gallery.current.rotation.y,
+      state.pointer.x * 0.16,
+      4,
+      delta
+    );
+    gallery.current.rotation.x = THREE.MathUtils.damp(
+      gallery.current.rotation.x,
+      -state.pointer.y * 0.06,
+      4,
+      delta
+    );
+    gallery.current.position.x = THREE.MathUtils.damp(
+      gallery.current.position.x,
+      (mobile ? 0 : -0.35) + state.pointer.x * 0.13,
+      4,
+      delta
+    );
+  });
 
   return (
-    <group position={mobile ? [0, -0.15, 0] : [-0.35, -0.1, 0]} scale={mobile ? 0.82 : 0.92}>
+    <group ref={gallery} position={mobile ? [0, -0.15, 0] : [-0.35, -0.1, 0]} scale={mobile ? 0.82 : 0.92}>
       <ClassicalBust />
       {!mobile && <RibbonSculpture />}
       {!mobile && <BirdSculpture />}
