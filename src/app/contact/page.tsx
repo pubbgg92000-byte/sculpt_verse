@@ -231,7 +231,7 @@ export default function ContactPage() {
                 <div aria-live="polite">
                   {status === "sent" && (
                     <p className="rounded-lg border border-forest/20 bg-forest/10 px-4 py-3 text-sm text-forest font-medium">
-                      ✓ Message delivered to ragulakanakaraju@gmail.com. We&apos;ll get back to you within 24 hours.
+                      ✓ Message delivered. We&apos;ll get back to you within 24 hours.
                     </p>
                   )}
                   {status === "error" && (

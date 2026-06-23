@@ -6,6 +6,7 @@ export interface Service {
   materials: string[];
   priceRange: string;
   image: string;
+  imagePosition?: string;
 }
 
 export const services: Service[] = [
@@ -16,7 +17,7 @@ export const services: Service[] = [
     applications: ["Resorts & Hotels", "Theme Parks", "Zoos & Nature Parks", "Villa Gardens", "Schools & Playgrounds"],
     materials: ["Cement", "FRP", "Steel Framework", "Acrylic Paint"],
     priceRange: "₹25,000 — ₹5,00,000+",
-    image: "/images/giraffe-villa-garden-portrait.png",
+    image: "/images/hero-giraffe-landscape.jpeg",
   },
   {
     id: "garden-sculptures",
@@ -34,7 +35,8 @@ export const services: Service[] = [
     applications: ["Art Galleries", "Corporate Offices", "Resort Lobbies", "Villa Entrances", "Public Spaces"],
     materials: ["Mild Steel", "Stainless Steel", "Corten Steel", "Copper"],
     priceRange: "₹20,000 — ₹4,00,000+",
-    image: "/images/deer-forest-resort-wide.png",
+    image: "/images/metal-giraffe-scrap-head.png",
+    imagePosition: "center center",
   },
   {
     id: "resort-installations",
@@ -79,7 +81,7 @@ export const services: Service[] = [
     applications: ["Amusement Parks", "Adventure Parks", "Water Parks", "Entertainment Zones", "Exhibition Centers"],
     materials: ["FRP", "Cement", "Steel", "LED Integration", "Special Effects"],
     priceRange: "₹1,00,000 — ₹30,00,000+",
-    image: "/images/crocodile-theme-park-landscape.png",
+    image: "/images/crocodile-playground-pool-portrait.png",
   },
   {
     id: "public-art",
