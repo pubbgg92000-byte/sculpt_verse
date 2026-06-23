@@ -21,7 +21,7 @@ const serviceLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-warm-white/80">
+    <footer className="bg-white text-charcoal/80">
       {/* Main Footer */}
       <div className="section-padding-sm">
         <div className="container-wide">
@@ -29,7 +29,7 @@ export function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <Link href="/" className="group mb-6 flex items-center gap-4">
-                <span className="relative grid h-20 w-20 place-items-center rounded-full border border-bronze-light/30 bg-[radial-gradient(circle,rgba(196,164,90,0.24),rgba(196,164,90,0.05)_58%,transparent_72%)] shadow-[0_0_38px_rgba(196,164,90,0.2)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(196,164,90,0.32)]">
+                <span className="relative grid h-20 w-20 place-items-center rounded-full border border-forest/20 bg-[radial-gradient(circle,rgba(27,71,50,0.12),rgba(27,71,50,0.03)_58%,transparent_72%)] shadow-[0_0_38px_rgba(27,71,50,0.1)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(27,71,50,0.18)]">
                   <Image
                     src="/logo-mark.png"
                     alt="SculptVerse"
@@ -40,20 +40,20 @@ export function Footer() {
                 </span>
                 <div>
                   <span
-                    className="text-xl font-bold text-warm-white"
+                    className="text-xl font-bold text-charcoal"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     SculptVerse
                   </span>
                 </div>
               </Link>
-              <p className="text-sm leading-relaxed text-warm-white/60 mb-6">
+              <p className="text-sm leading-relaxed text-charcoal-light mb-6">
                 Transforming spaces into living art. Premium custom sculptures
                 for resorts, villas, parks, and institutions across India.
               </p>
               <div className="divider mb-6" />
               <p
-                className="text-lg text-warm-white/40"
+                className="text-lg text-charcoal-light/60"
                 style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
               >
                 &ldquo;Where Imagination Meets Craftsmanship&rdquo;
@@ -63,7 +63,7 @@ export function Footer() {
             {/* Quick Links */}
             <div>
               <h3
-                className="text-sm font-semibold uppercase tracking-widest text-warm-white mb-6"
+                className="text-sm font-semibold uppercase tracking-widest text-charcoal mb-6"
               >
                 Quick Links
               </h3>
@@ -72,7 +72,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-warm-white/60 hover:text-bronze-light transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-sm text-charcoal-light hover:text-forest transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                       {link.label}
@@ -85,7 +85,7 @@ export function Footer() {
             {/* Services */}
             <div>
               <h3
-                className="text-sm font-semibold uppercase tracking-widest text-warm-white mb-6"
+                className="text-sm font-semibold uppercase tracking-widest text-charcoal mb-6"
               >
                 Our Services
               </h3>
@@ -94,7 +94,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-warm-white/60 hover:text-bronze-light transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-sm text-charcoal-light hover:text-forest transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                       {link.label}
@@ -107,34 +107,36 @@ export function Footer() {
             {/* Contact Info */}
             <div>
               <h3
-                className="text-sm font-semibold uppercase tracking-widest text-warm-white mb-6"
+                className="text-sm font-semibold uppercase tracking-widest text-charcoal mb-6"
               >
                 Get In Touch
               </h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-bronze-light mt-0.5 shrink-0" />
+                  <Phone className="w-4 h-4 text-forest mt-0.5 shrink-0" />
                   <div>
                     <a
-                      href="tel:+919876543210"
-                      className="text-sm text-warm-white/80 hover:text-bronze-light transition-colors"
+                      href="tel:+919381699807"
+                      className="text-sm text-charcoal hover:text-forest transition-colors"
                     >
-                      +91 98765 43210
+                      +91 93816 99807
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-bronze-light mt-0.5 shrink-0" />
+                  <Mail className="w-4 h-4 text-forest mt-0.5 shrink-0" />
                   <a
-                    href="mailto:hello@sculptverse.in"
-                    className="text-sm text-warm-white/80 hover:text-bronze-light transition-colors"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ragulakanakaraju@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-charcoal hover:text-forest transition-colors"
                   >
-                    hello@sculptverse.in
+                    ragulakanakaraju@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-bronze-light mt-0.5 shrink-0" />
-                  <span className="text-sm text-warm-white/60">
+                  <MapPin className="w-4 h-4 text-forest mt-0.5 shrink-0" />
+                  <span className="text-sm text-charcoal-light">
                     Hyderabad, Telangana, India
                     <br />
                     Custom sculptures for homes, parks & businesses
@@ -147,12 +149,12 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-warm-white/10">
+      <div className="border-t border-charcoal/10">
         <div className="container-wide px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-warm-white/40">
+          <p className="text-xs text-charcoal-light/60">
             &copy; {new Date().getFullYear()} SculptVerse. All rights reserved.
           </p>
-          <p className="text-xs text-warm-white/30">
+          <p className="text-xs text-charcoal-light/40">
             Crafted with passion in India 🇮🇳
           </p>
         </div>

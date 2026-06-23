@@ -115,7 +115,7 @@ export default function ContactPage() {
                         setFormData({ ...formData, phone: e.target.value })
                       }
                       className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal placeholder:text-charcoal-light/50 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 93816 99807"
                     />
                   </div>
                 </div>
@@ -270,7 +270,7 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919381699807"
                     className="flex items-start gap-4 group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-forest/10 flex items-center justify-center shrink-0 group-hover:bg-forest/20 transition-colors">
@@ -278,7 +278,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-charcoal group-hover:text-forest transition-colors">
-                        +91 98765 43210
+                        +91 93816 99807
                       </p>
                       <p className="text-sm text-charcoal-light">
                         Mon–Sat, 9:00 AM – 7:00 PM
@@ -287,7 +287,9 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="mailto:hello@sculptverse.in"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ragulakanakaraju@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-start gap-4 group"
                   >
                     <div className="w-12 h-12 rounded-xl bg-bronze/10 flex items-center justify-center shrink-0 group-hover:bg-bronze/20 transition-colors">
@@ -295,7 +297,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-charcoal group-hover:text-forest transition-colors">
-                        hello@sculptverse.in
+                        ragulakanakaraju@gmail.com
                       </p>
                       <p className="text-sm text-charcoal-light">
                         We reply as soon as possible

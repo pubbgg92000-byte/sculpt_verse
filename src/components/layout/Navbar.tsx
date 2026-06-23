@@ -209,8 +209,8 @@ export function Navbar() {
           </div>
 
           <div className="mt-auto grid gap-3 pt-8 sm:grid-cols-2">
-            <a href="tel:+919876543210" className="flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/15 text-sm font-medium text-white/85">
-              <Phone className="h-4 w-4 text-bronze-light" /> +91 98765 43210
+            <a href="tel:+919381699807" className="flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/15 text-sm font-medium text-white/85">
+              <Phone className="h-4 w-4 text-bronze-light" /> +91 93816 99807
             </a>
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-bronze min-h-12 text-xs">
               Start your project

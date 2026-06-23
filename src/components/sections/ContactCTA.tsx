@@ -86,11 +86,11 @@ export function ContactCTA() {
             WhatsApp Us
           </a>
           <a
-            href="tel:+919876543210"
+            href="tel:+919381699807"
             className="flex items-center gap-2 text-warm-white/70 hover:text-warm-white transition-colors text-sm"
           >
             <Phone className="w-4 h-4" />
-            +91 98765 43210
+            +91 93816 99807
           </a>
         </div>
 

@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
     //   from: 'SculptVerse <noreply@sculptverse.in>',
-    //   to: ['hello@sculptverse.in'],
+    //   to: ['ragulakanakaraju@gmail.com'],
     //   subject: `New Inquiry from ${name} — ${projectType || 'General'}`,
     //   html: `
     //     <h2>New Contact Form Submission</h2>

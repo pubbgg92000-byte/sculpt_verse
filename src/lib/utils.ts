@@ -6,10 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getWhatsAppLink(message: string = "Hi! I'm interested in your sculpture services.") {
-  const phone = "919876543210"; // Replace with actual number
+  const phone = "919381699807";
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
 export function getPhoneLink() {
-  return "tel:+919876543210"; // Replace with actual number
+  return "tel:+919381699807";
 }
