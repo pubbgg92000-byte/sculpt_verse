@@ -24,7 +24,7 @@ export default function AboutPage() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-charcoal via-forest-dark to-charcoal">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="/images/image copy 35.png"
+            src="/images/elephant-resort-garden-portrait.png"
             alt="SculptVerse Workshop"
             fill
             className="object-cover"
@@ -111,7 +111,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-dramatic">
                 <Image
-                  src="/images/image copy 8.png"
+                  src="/images/giraffe-villa-garden-portrait.png"
                   alt="SculptVerse craftsmanship"
                   fill
                   className="object-cover"
@@ -133,7 +133,7 @@ export default function AboutPage() {
             <div className="order-2 md:order-1 relative">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-dramatic">
                 <Image
-                  src="/images/image copy 15.png"
+                  src="/images/galloping-horse-estate-entrance.png"
                   alt="SculptVerse installation"
                   fill
                   className="object-cover"

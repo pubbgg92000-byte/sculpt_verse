@@ -82,6 +82,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   src={img}
                   alt={`${project.title} - Image ${i + 1}`}
                   fill
+                  unoptimized
+                  loading={i === 0 ? undefined : "eager"}
                   sizes={i === 0 ? "100vw" : "50vw"}
                   className="object-cover hover:scale-105 transition-transform duration-700"
                   priority={i === 0}
@@ -158,6 +160,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       src={r.images[0]}
                       alt={r.title}
                       fill
+                      unoptimized
+                      loading="eager"
                       sizes="33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />

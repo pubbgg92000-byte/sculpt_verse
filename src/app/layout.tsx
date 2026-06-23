@@ -84,7 +84,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${inter.variable} ${cormorant.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

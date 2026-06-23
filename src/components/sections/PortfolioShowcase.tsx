@@ -1,60 +1,20 @@
 "use client";
 
-import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getFeaturedProjects } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function PortfolioShowcase() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
   const featured = getFeaturedProjects();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const track = trackRef.current!;
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
-
-        const animation = gsap.to(track, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: () => `+=${distance()}`,
-            pin: true,
-            scrub: 0.8,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
-          },
-        });
-
-        return () => animation.kill();
-      });
-
-      return () => mm.revert();
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-cream md:h-screen"
+      className="relative overflow-hidden bg-cream py-16"
       id="portfolio-showcase"
     >
-      {/* Section Header - pinned */}
-      <div className="portfolio-showcase-header relative z-10 px-5 pb-4 pt-16 sm:px-8 md:absolute md:left-0 md:right-0 md:top-0 md:px-6 md:pt-12 lg:px-10">
+      {/* Section Header */}
+      <div className="portfolio-showcase-header relative z-10 px-5 pb-8 sm:px-8 lg:px-10">
         <div className="container-wide flex items-end justify-between">
           <div>
             <p className="text-label mb-2">Our Work</p>
@@ -74,19 +34,20 @@ export function PortfolioShowcase() {
 
       {/* Horizontal Scroll Track */}
       <div
-        ref={trackRef}
-        className="relative flex w-full flex-col gap-5 px-5 pb-16 pt-3 sm:px-8 md:absolute md:left-0 md:top-0 md:h-full md:w-max md:flex-row md:items-center md:gap-6 md:px-6 md:pb-0 md:pt-28 lg:px-10"
+        className="relative flex w-full snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-5 sm:px-8 md:gap-6 lg:px-10"
       >
         {featured.map((project) => (
           <Link
             key={project.id}
             href={`/portfolio/${project.slug}`}
-            className="group relative h-[420px] w-full flex-shrink-0 overflow-hidden rounded-2xl sm:h-[500px] md:h-[65vh] md:w-[440px]"
+            className="group relative h-[420px] w-[82vw] max-w-[440px] flex-shrink-0 snap-start overflow-hidden rounded-2xl sm:h-[500px] md:h-[65vh]"
           >
             <Image
               src={project.images[0]}
               alt={project.title}
               fill
+              unoptimized
+              loading="eager"
               sizes="440px"
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
@@ -123,7 +84,7 @@ export function PortfolioShowcase() {
         {/* View All Card */}
         <Link
           href="/portfolio"
-          className="group flex h-44 w-full flex-shrink-0 flex-col items-center justify-center gap-3 rounded-2xl bg-forest transition-colors duration-300 hover:bg-forest-light md:h-[65vh] md:w-[300px] md:gap-4"
+          className="group flex h-[420px] w-[72vw] max-w-[300px] flex-shrink-0 snap-start flex-col items-center justify-center gap-3 rounded-2xl bg-forest transition-colors duration-300 hover:bg-forest-light sm:h-[500px] md:h-[65vh] md:gap-4"
         >
           <div className="w-16 h-16 rounded-full border-2 border-warm-white/30 flex items-center justify-center group-hover:border-warm-white/60 transition-colors">
             <ArrowRight className="w-7 h-7 text-warm-white group-hover:translate-x-1 transition-transform" />

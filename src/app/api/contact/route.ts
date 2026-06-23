@@ -1,5 +1,17 @@
 import { NextResponse } from "next/server";
 
+const CONTACT_EMAIL =
+  process.env.CONTACT_TO_EMAIL || "ragulakanakaraju@gmail.com";
+
+function escapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -12,37 +24,49 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: Integrate with Resend for email delivery
-    // For now, log the contact form submission
-    console.log("Contact form submission:", {
-      name,
-      phone,
-      email,
-      projectType,
-      budget,
-      message,
-      timestamp: new Date().toISOString(),
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Contact form email is not configured: RESEND_API_KEY is missing.");
+      return NextResponse.json(
+        { error: "Email delivery is not configured yet." },
+        { status: 503 }
+      );
+    }
+
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from:
+          process.env.CONTACT_FROM_EMAIL ||
+          "SculptVerse <contact@sculptverse.in>",
+        to: [CONTACT_EMAIL],
+        reply_to: email || undefined,
+        subject: `New inquiry from ${name} — ${projectType || "General"}`,
+        html: `
+          <h2>New SculptVerse contact inquiry</h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email || "Not provided")}</p>
+          <p><strong>Project type:</strong> ${escapeHtml(projectType || "Not specified")}</p>
+          <p><strong>Budget:</strong> ${escapeHtml(budget || "Not specified")}</p>
+          <p><strong>Message:</strong><br>${escapeHtml(message).replaceAll("\n", "<br>")}</p>
+        `,
+      }),
     });
 
-    // When Resend API key is configured, uncomment:
-    // import { Resend } from 'resend';
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'SculptVerse <noreply@sculptverse.in>',
-    //   to: ['ragulakanakaraju@gmail.com'],
-    //   subject: `New Inquiry from ${name} — ${projectType || 'General'}`,
-    //   html: `
-    //     <h2>New Contact Form Submission</h2>
-    //     <p><strong>Name:</strong> ${name}</p>
-    //     <p><strong>Phone:</strong> ${phone}</p>
-    //     <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-    //     <p><strong>Project Type:</strong> ${projectType || 'Not specified'}</p>
-    //     <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
-    //     <p><strong>Message:</strong> ${message}</p>
-    //   `,
-    // });
+    if (!response.ok) {
+      const deliveryError = await response.text();
+      console.error("Resend delivery failed:", response.status, deliveryError);
+      return NextResponse.json(
+        { error: "We could not deliver your message." },
+        { status: 502 }
+      );
+    }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, deliveredTo: CONTACT_EMAIL });
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(

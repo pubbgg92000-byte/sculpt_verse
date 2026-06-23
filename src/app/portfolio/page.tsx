@@ -6,13 +6,35 @@ import Link from "next/link";
 import { projects, categories } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 
+const projectOrder = [
+  "giraffe-family-resort",
+  "lion-pair-entrance",
+  "playground-animal-set",
+  "custom-villa-entrance",
+  "elephant-herd-park",
+  "swan-lake-resort",
+  "horse-sculpture-estate",
+  "crocodile-theme-park",
+  "metal-art-collection",
+  "peacock-garden-feature",
+  "resort-landscape-collection",
+  "deer-garden-set",
+  "garden-landscape-art",
+  "giraffe-garden-villa",
+  "resort-entrance-feature",
+];
+
 export default function PortfolioPage() {
   const [activeCategory, setActiveCategory] = useState("all");
 
+  const orderedProjects = [...projects].sort(
+    (a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id)
+  );
+
   const filtered =
     activeCategory === "all"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+      ? orderedProjects
+      : orderedProjects.filter((p) => p.category === activeCategory);
 
   return (
     <>
@@ -75,6 +97,8 @@ export default function PortfolioPage() {
                       src={project.images[0]}
                       alt={project.title}
                       fill
+                      unoptimized
+                      loading="eager"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />

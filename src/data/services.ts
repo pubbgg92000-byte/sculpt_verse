@@ -16,7 +16,7 @@ export const services: Service[] = [
     applications: ["Resorts & Hotels", "Theme Parks", "Zoos & Nature Parks", "Villa Gardens", "Schools & Playgrounds"],
     materials: ["Cement", "FRP", "Steel Framework", "Acrylic Paint"],
     priceRange: "₹25,000 — ₹5,00,000+",
-    image: "/images/image copy 8.png",
+    image: "/images/giraffe-villa-garden-portrait.png",
   },
   {
     id: "garden-sculptures",
@@ -25,7 +25,7 @@ export const services: Service[] = [
     applications: ["Villa Gardens", "Resort Landscapes", "Public Parks", "Botanical Gardens", "Wedding Venues"],
     materials: ["Cement", "Natural Stone", "Bronze Finish", "FRP"],
     priceRange: "₹15,000 — ₹3,00,000+",
-    image: "/images/image copy 20.png",
+    image: "/images/peacock-garden-pavilion.png",
   },
   {
     id: "metal-sculptures",
@@ -34,7 +34,7 @@ export const services: Service[] = [
     applications: ["Art Galleries", "Corporate Offices", "Resort Lobbies", "Villa Entrances", "Public Spaces"],
     materials: ["Mild Steel", "Stainless Steel", "Corten Steel", "Copper"],
     priceRange: "₹20,000 — ₹4,00,000+",
-    image: "/images/image copy 17.png",
+    image: "/images/deer-forest-resort-wide.png",
   },
   {
     id: "resort-installations",
@@ -43,7 +43,7 @@ export const services: Service[] = [
     applications: ["Beach Resorts", "Mountain Retreats", "Heritage Hotels", "Eco Resorts", "Luxury Villas"],
     materials: ["Cement", "Steel", "FRP", "Natural Stone", "Marine-Grade Finishes"],
     priceRange: "₹2,00,000 — ₹25,00,000+",
-    image: "/images/image copy 32.png",
+    image: "/images/peacock-pool-garden-square.png",
   },
   {
     id: "playground-installations",
@@ -52,7 +52,7 @@ export const services: Service[] = [
     applications: ["Schools", "Public Parks", "Theme Parks", "Children's Museums", "Residential Communities"],
     materials: ["Cement", "FRP", "Non-Toxic Paint", "Safety Finish"],
     priceRange: "₹15,000 — ₹2,00,000+",
-    image: "/images/image copy 38.png",
+    image: "/images/deer-school-playground-wide.png",
   },
   {
     id: "custom-fabrication",
@@ -61,7 +61,7 @@ export const services: Service[] = [
     applications: ["Any Space", "Brand Installations", "Memorial Sculptures", "Entrance Features", "Exhibition Pieces"],
     materials: ["All Materials Available", "Mixed Media", "Custom Finishes"],
     priceRange: "₹50,000 — ₹50,00,000+",
-    image: "/images/image copy 9.png",
+    image: "/images/giraffe-villa-garden-portrait.png",
   },
   {
     id: "landscape-art",
@@ -70,7 +70,7 @@ export const services: Service[] = [
     applications: ["Farmhouses", "Estate Gardens", "Public Parks", "Corporate Campuses", "Wellness Retreats"],
     materials: ["Natural Stone", "Cement", "Water Features", "Integrated Lighting"],
     priceRange: "₹30,000 — ₹8,00,000+",
-    image: "/images/image copy 12.png",
+    image: "/images/elephant-family-courtyard.png",
   },
   {
     id: "theme-park-features",
@@ -79,7 +79,7 @@ export const services: Service[] = [
     applications: ["Amusement Parks", "Adventure Parks", "Water Parks", "Entertainment Zones", "Exhibition Centers"],
     materials: ["FRP", "Cement", "Steel", "LED Integration", "Special Effects"],
     priceRange: "₹1,00,000 — ₹30,00,000+",
-    image: "/images/image copy 27.png",
+    image: "/images/crocodile-theme-park-landscape.png",
   },
   {
     id: "public-art",
@@ -88,6 +88,6 @@ export const services: Service[] = [
     applications: ["City Centers", "Government Buildings", "University Campuses", "Hospitals", "Religious Institutions"],
     materials: ["Cement", "Bronze", "Stainless Steel", "Natural Stone"],
     priceRange: "₹1,00,000 — ₹1,00,00,000+",
-    image: "/images/image copy 30.png",
+    image: "/images/lion-estate-garden-wide.png",
   },
 ];

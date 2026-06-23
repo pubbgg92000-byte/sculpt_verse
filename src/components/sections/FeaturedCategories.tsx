@@ -13,37 +13,37 @@ const categories = [
   {
     title: "Animal Sculptures",
     description: "Life-sized wildlife masterpieces",
-    image: "/images/image copy 8.png",
+    image: "/images/giraffe-villa-garden-portrait.png",
     href: "/portfolio?category=animals",
   },
   {
     title: "Metal Art",
     description: "Hand-welded steel & iron creations",
-    image: "/images/image copy 17.png",
+    image: "/images/deer-forest-resort-wide.png",
     href: "/portfolio?category=metal",
   },
   {
     title: "Playground Sculptures",
     description: "Safe, vibrant & educational",
-    image: "/images/image copy 38.png",
+    image: "/images/deer-school-playground-wide.png",
     href: "/portfolio?category=playground",
   },
   {
     title: "Garden Features",
     description: "Elegant outdoor art pieces",
-    image: "/images/image copy 20.png",
+    image: "/images/peacock-garden-pavilion.png",
     href: "/portfolio?category=garden",
   },
   {
     title: "Resort Installations",
     description: "Complete landscape transformations",
-    image: "/images/image copy 32.png",
+    image: "/images/peacock-pool-garden-square.png",
     href: "/portfolio?category=resort",
   },
   {
     title: "Custom Projects",
     description: "Your vision, our craftsmanship",
-    image: "/images/image copy 9.png",
+    image: "/images/giraffe-villa-garden-portrait.png",
     href: "/portfolio?category=custom",
   },
 ];
@@ -94,6 +94,8 @@ export function FeaturedCategories() {
                 src={cat.image}
                 alt={cat.title}
                 fill
+                priority
+                unoptimized
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />

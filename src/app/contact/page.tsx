@@ -16,10 +16,18 @@ export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const updateField = (field: keyof typeof formData, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    if (status !== "idle") setStatus("idle");
+    if (errorMessage) setErrorMessage("");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
 
     try {
       const res = await fetch("/api/contact", {
@@ -27,6 +35,8 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
+      const result = await res.json().catch(() => ({}));
 
       if (res.ok) {
         setStatus("sent");
@@ -40,9 +50,13 @@ export default function ContactPage() {
         });
       } else {
         setStatus("error");
+        setErrorMessage(
+          result.error || "We could not send your message. Please try again."
+        );
       }
     } catch {
       setStatus("error");
+      setErrorMessage("We could not connect. Please try WhatsApp or call us.");
     }
   };
 
@@ -71,14 +85,17 @@ export default function ContactPage() {
       {/* Contact Content */}
       <section className="section-padding bg-warm-white">
         <div className="container-wide px-6">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
             {/* Contact Form */}
             <div className="lg:col-span-3">
               <h2 className="heading-section text-2xl md:text-3xl mb-8">
                 Send Us a Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 bg-cream/45 border border-stone-light/70 rounded-2xl p-5 sm:p-8"
+              >
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -92,9 +109,7 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      onChange={(e) => updateField("name", e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal placeholder:text-charcoal-light/50 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
                       placeholder="Your name"
                     />
@@ -111,9 +126,7 @@ export default function ContactPage() {
                       type="tel"
                       required
                       value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
+                      onChange={(e) => updateField("phone", e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal placeholder:text-charcoal-light/50 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
                       placeholder="+91 93816 99807"
                     />
@@ -131,9 +144,7 @@ export default function ContactPage() {
                     id="contact-email"
                     type="email"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => updateField("email", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal placeholder:text-charcoal-light/50 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
                     placeholder="you@example.com"
                   />
@@ -150,12 +161,7 @@ export default function ContactPage() {
                     <select
                       id="contact-project-type"
                       value={formData.projectType}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          projectType: e.target.value,
-                        })
-                      }
+                      onChange={(e) => updateField("projectType", e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
                     >
                       <option value="">Select type</option>
@@ -178,9 +184,7 @@ export default function ContactPage() {
                     <select
                       id="contact-budget"
                       value={formData.budget}
-                      onChange={(e) =>
-                        setFormData({ ...formData, budget: e.target.value })
-                      }
+                      onChange={(e) => updateField("budget", e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all"
                     >
                       <option value="">Select budget</option>
@@ -205,9 +209,7 @@ export default function ContactPage() {
                     required
                     rows={5}
                     value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
+                    onChange={(e) => updateField("message", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-light bg-white text-charcoal placeholder:text-charcoal-light/50 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-all resize-none"
                     placeholder="Describe your project — location, type of sculpture, size preferences, any reference images..."
                   />
@@ -216,7 +218,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="btn-primary text-sm px-8 py-4 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full sm:w-auto text-sm px-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-4 h-4" />
                   {status === "sending"
@@ -226,22 +228,24 @@ export default function ContactPage() {
                     : "Send Message"}
                 </button>
 
-                {status === "sent" && (
-                  <p className="text-sm text-forest font-medium">
-                    ✓ Thank you! We&apos;ll get back to you within 24 hours.
-                  </p>
-                )}
-                {status === "error" && (
-                  <p className="text-sm text-red-600 font-medium">
-                    Something went wrong. Please try WhatsApp or call us directly.
-                  </p>
-                )}
+                <div aria-live="polite">
+                  {status === "sent" && (
+                    <p className="rounded-lg border border-forest/20 bg-forest/10 px-4 py-3 text-sm text-forest font-medium">
+                      ✓ Message delivered to ragulakanakaraju@gmail.com. We&apos;ll get back to you within 24 hours.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 font-medium">
+                      {errorMessage} Please use WhatsApp or call us directly if it&apos;s urgent.
+                    </p>
+                  )}
+                </div>
               </form>
             </div>
 
             {/* Contact Info Sidebar */}
             <div className="lg:col-span-2">
-              <div className="bg-cream rounded-2xl p-8 sticky top-28">
+              <div className="bg-cream border border-stone-light/70 rounded-2xl p-6 sm:p-8 lg:sticky lg:top-28">
                 <h3
                   className="text-xl font-bold text-charcoal mb-6"
                   style={{ fontFamily: "var(--font-heading)" }}
