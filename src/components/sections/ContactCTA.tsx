@@ -58,20 +58,20 @@ export function ContactCTA() {
           className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-warm-white mb-6 leading-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          Let&apos;s Shape Something Beautiful For Your Space
+          Share Your Reference. We&apos;ll Discuss What Is Practical.
         </h2>
         <p
           className="text-lg md:text-xl text-warm-white/60 max-w-2xl mx-auto mb-10"
           style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
         >
-          Share a photo, sketch, reference, or rough idea. We&apos;ll help you explore
-          the right size, material, finish, and budget before work begins.
+          Send a photo, sketch, reference, or rough idea. We&apos;ll discuss size,
+          material, finish, transport and budget before work begins.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <Link
             href="/contact"
-            className="btn-bronze text-sm px-8 py-4 flex items-center gap-2"
+            className="btn-bronze w-full text-sm px-8 py-4 flex items-center gap-2 sm:w-auto"
           >
             Get Free Quote
             <ArrowRight className="w-4 h-4" />
@@ -80,7 +80,7 @@ export function ContactCTA() {
             href={getWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-sm border-2 border-white/35 bg-white/10 px-8 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-forest hover:shadow-elevated"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-sm border-2 border-white/35 bg-white/10 px-8 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-forest hover:shadow-elevated sm:w-auto"
           >
             <MessageCircle className="w-4 h-4" />
             WhatsApp Us

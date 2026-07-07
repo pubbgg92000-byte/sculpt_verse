@@ -12,10 +12,38 @@ gsap.registerPlugin(ScrollTrigger);
 const categories = [
   {
     title: "Animal Sculptures",
-    description: "Life-sized wildlife masterpieces",
+    description: "Hand-built outdoor figures",
     image: "/images/giraffe-villa-garden-portrait.png",
-    imagePosition: "center center",
+    imagePosition: "center top",
     href: "/portfolio?category=animals",
+  },
+  {
+    title: "Playground Sculptures",
+    description: "Made for parks and kids' areas",
+    image: "/images/playhouse-tree-main-real.png",
+    imagePosition: "center center",
+    href: "/portfolio?category=playground",
+  },
+  {
+    title: "Garden Features",
+    description: "Arches, lights and focal points",
+    image: "/images/garden-arch-day-real.png",
+    imagePosition: "center center",
+    href: "/portfolio?category=garden",
+  },
+  {
+    title: "Resort Installations",
+    description: "Practical landscape features",
+    image: "/images/mist-fountain-day-real.png",
+    imagePosition: "center center",
+    href: "/portfolio?category=resort",
+  },
+  {
+    title: "Custom Projects",
+    description: "Site-built ideas for your space",
+    image: "/images/flower-light-day-real.png",
+    imagePosition: "center center",
+    href: "/portfolio?category=custom",
   },
   {
     title: "Metal Art",
@@ -23,34 +51,6 @@ const categories = [
     image: "/images/metal-scrap-horse-portrait.png",
     imagePosition: "center center",
     href: "/portfolio?category=metal",
-  },
-  {
-    title: "Playground Sculptures",
-    description: "Safe, vibrant & educational",
-    image: "/images/dinosaur-playground-head.png",
-    imagePosition: "72% center",
-    href: "/portfolio?category=playground",
-  },
-  {
-    title: "Garden Features",
-    description: "Elegant outdoor art pieces",
-    image: "/images/peacock-garden-pavilion.png",
-    imagePosition: "center center",
-    href: "/portfolio?category=garden",
-  },
-  {
-    title: "Resort Installations",
-    description: "Complete landscape transformations",
-    image: "/images/swans-lake-resort-wide.png",
-    imagePosition: "center center",
-    href: "/portfolio?category=resort",
-  },
-  {
-    title: "Custom Projects",
-    description: "Your vision, our craftsmanship",
-    image: "/images/elephant-family-villa-walkway.png",
-    imagePosition: "32% center",
-    href: "/portfolio?category=custom",
   },
 ];
 

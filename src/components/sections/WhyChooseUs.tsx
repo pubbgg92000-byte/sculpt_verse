@@ -57,7 +57,7 @@ export function WhyChooseUs() {
         <div className="mx-auto mb-7 max-w-3xl text-center md:mb-8">
           <p className="text-label mb-2">Why SculptVerse</p>
           <h2 className="heading-section mb-3 text-3xl md:text-4xl lg:text-5xl">
-            Craftsmanship You Can Trust
+            Practical Support From Idea To Site
           </h2>
           <div className="divider mx-auto" />
         </div>

@@ -1,131 +1,67 @@
-"use client";
+import { CheckCircle2, Hammer, MapPin, ShieldCheck } from "lucide-react";
 
-import { useState, useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { testimonials } from "@/data/testimonials";
-import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+const proofPoints = [
+  {
+    icon: Hammer,
+    title: "Practical builds",
+    text: "Frames, finishes, and sizes are planned for real sites.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Outdoor ready",
+    text: "Coatings and materials are chosen for weather exposure.",
+  },
+  {
+    icon: MapPin,
+    title: "Hyderabad based",
+    text: "Simple coordination for site visits and local execution.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Clear scope",
+    text: "You see what is included before work begins.",
+  },
+];
 
 export function Testimonials() {
-  const [current, setCurrent] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () =>
-    setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
-
-  useEffect(() => {
-    const interval = setInterval(next, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(sectionRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const t = testimonials[current];
-
   return (
     <section
-      ref={sectionRef}
       className="section-padding bg-charcoal text-warm-white"
-      id="testimonials"
+      id="project-proof"
     >
-      <div className="container-narrow">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-label text-bronze-light mb-3">Testimonials</p>
+      <div className="container-wide">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+          <p className="text-label text-bronze-light mb-3">Simple Proof</p>
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-white mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            What Our Clients Say
+            Built To Be Made, Not Just Imagined
           </h2>
-          <div className="divider mx-auto" />
+          <p className="mx-auto max-w-xl text-sm leading-6 text-warm-white/75">
+            The focus is practical custom work: buildable forms, clear material
+            choices, and outdoor finishes that make sense.
+          </p>
         </div>
 
-        {/* Testimonial Card */}
-        <div className="relative max-w-3xl mx-auto">
-          <Quote className="w-12 h-12 text-bronze/30 mb-6" />
-
-          <div className="min-h-[200px]">
-            <p
-              className="text-xl md:text-2xl text-warm-white/90 leading-relaxed mb-8"
-              style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
-            >
-              &ldquo;{t.quote}&rdquo;
-            </p>
-
-            <div className="flex items-center gap-4">
-              {/* Avatar placeholder */}
-              <div className="w-14 h-14 rounded-full bg-forest flex items-center justify-center text-warm-white font-bold text-lg">
-                {t.name.charAt(0)}
-              </div>
-              <div>
-                <p className="font-semibold text-warm-white">{t.name}</p>
-                <p className="text-sm text-warm-white/60">
-                  {t.role}, {t.company}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {proofPoints.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.title}
+                className="rounded-lg border border-white/10 bg-white/[0.05] p-5"
+              >
+                <Icon className="mb-4 h-6 w-6 text-bronze-light" />
+                <h3 className="mb-2 text-base font-semibold text-warm-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-6 text-warm-white/72">
+                  {item.text}
                 </p>
-                <p className="text-xs text-warm-white/40">{t.location}</p>
               </div>
-              <div className="ml-auto flex gap-0.5">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 text-bronze fill-bronze"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-warm-white/20 flex items-center justify-center hover:bg-warm-white/10 transition-colors"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "bg-bronze w-6"
-                      : "bg-warm-white/30 hover:bg-warm-white/50"
-                  }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-warm-white/20 flex items-center justify-center hover:bg-warm-white/10 transition-colors"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

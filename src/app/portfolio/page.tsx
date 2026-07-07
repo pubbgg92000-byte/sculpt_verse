@@ -7,21 +7,14 @@ import { projects, categories } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 
 const projectOrder = [
-  "giraffe-family-resort",
-  "lion-pair-entrance",
+  "mist-fountain-feature",
+  "floral-garden-arch",
+  "giraffe-garden-villa",
   "playground-animal-set",
   "custom-villa-entrance",
-  "elephant-herd-park",
-  "swan-lake-resort",
-  "horse-sculpture-estate",
   "crocodile-theme-park",
-  "metal-art-collection",
-  "peacock-garden-feature",
-  "resort-landscape-collection",
-  "deer-garden-set",
   "garden-landscape-art",
-  "giraffe-garden-villa",
-  "resort-entrance-feature",
+  "metal-art-collection",
 ];
 
 export default function PortfolioPage() {
@@ -48,12 +41,12 @@ export default function PortfolioPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-warm-white mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Our Masterpieces
+            Selected Work
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            Browse our collection of handcrafted sculptures installed across
-            India&apos;s finest resorts, villas, parks, and institutions.
+            Browse a smaller set of practical sculptures and outdoor features
+            that can be made, installed, and maintained in real spaces.
           </p>
         </div>
       </section>
@@ -82,6 +75,7 @@ export default function PortfolioPage() {
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {filtered.map((project, index) => {
               const isLarge = index % 5 === 0;
+              const isPortraitLead = project.id === "giraffe-garden-villa";
               return (
                 <Link
                   key={project.id}
@@ -90,7 +84,7 @@ export default function PortfolioPage() {
                 >
                   <div
                     className={`relative ${
-                      isLarge ? "aspect-[3/4]" : "aspect-[4/3]"
+                      isLarge || isPortraitLead ? "aspect-[3/4]" : "aspect-[4/3]"
                     }`}
                   >
                     <Image
@@ -101,6 +95,9 @@ export default function PortfolioPage() {
                       loading="eager"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      style={{
+                        objectPosition: isPortraitLead ? "center top" : "center center",
+                      }}
                     />
                     <div className="overlay" />
 

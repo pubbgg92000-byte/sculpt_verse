@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Moon, Sun, Palette, ArrowUpRight } from "lucide-react";
+import { Menu, X, Phone, Moon, Sun, ArrowUpRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/utils";
 
 const navLinks = [
@@ -17,12 +17,11 @@ const navLinks = [
   { href: "/contact", label: "Contact", index: "07" },
 ];
 
-type ThemeName = "day" | "clay" | "night";
+type ThemeName = "day" | "night";
 
 const themes: { id: ThemeName; label: string; description: string; Icon: typeof Sun }[] = [
-  { id: "day", label: "Forest Day", description: "Fresh green daylight", Icon: Sun },
-  { id: "clay", label: "Warm Clay", description: "Earthy studio glow", Icon: Palette },
-  { id: "night", label: "Night Studio", description: "Deep gallery mood", Icon: Moon },
+  { id: "day", label: "Light", description: "Clear daylight view", Icon: Sun },
+  { id: "night", label: "Dark", description: "High-contrast night view", Icon: Moon },
 ];
 
 export function Navbar() {
@@ -33,10 +32,10 @@ export function Navbar() {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("sculptverse-theme");
-    const nextTheme: ThemeName = saved === "night" || saved === "clay" ? saved : "day";
+    const nextTheme: ThemeName = saved === "night" ? saved : "day";
     document.documentElement.dataset.theme = nextTheme;
     document.body.dataset.theme = nextTheme;
-    document.body.classList.remove("theme-day", "theme-clay", "theme-night");
+    document.body.classList.remove("theme-day", "theme-night");
     document.body.classList.add(`theme-${nextTheme}`);
     const frame = window.requestAnimationFrame(() => setTheme(nextTheme));
     return () => window.cancelAnimationFrame(frame);
@@ -67,7 +66,7 @@ export function Navbar() {
     window.requestAnimationFrame(() => {
       document.documentElement.dataset.theme = next;
       document.body.dataset.theme = next;
-      document.body.classList.remove("theme-day", "theme-clay", "theme-night");
+      document.body.classList.remove("theme-day", "theme-night");
       document.body.classList.add(`theme-${next}`);
       window.localStorage.setItem("sculptverse-theme", next);
     });
@@ -128,7 +127,7 @@ export function Navbar() {
             aria-label="Switch site theme"
             title="Switch site theme"
           >
-            <Palette className="h-4 w-4" />
+            {theme === "night" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
           </button>
 
           <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-primary !hidden px-5 py-2.5 text-[10px] xl:!inline-flex">
@@ -184,9 +183,9 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-3">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/45">Choose mood</p>
-            <div className="grid gap-2 sm:grid-cols-3">
+          <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.04] p-3">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/65">Theme</p>
+            <div className="grid grid-cols-2 gap-2">
               {themes.map(({ id, label, description, Icon }) => {
                 const selected = id === theme;
                 return (
@@ -194,14 +193,14 @@ export function Navbar() {
                     key={id}
                     type="button"
                     onClick={() => selectTheme(id)}
-                    className={`rounded-xl border p-3 text-left transition-all duration-300 ${
+                    className={`rounded-lg border p-3 text-left transition-all duration-300 ${
                       selected ? "border-bronze-light bg-bronze/20 text-white" : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/25 hover:bg-white/[0.08]"
                     }`}
                     aria-pressed={selected}
                   >
                     <Icon className="mb-2 h-4 w-4 text-bronze-light" />
                     <span className="block text-sm font-semibold">{label}</span>
-                    <span className="mt-1 block text-[11px] leading-4 text-white/45">{description}</span>
+                    <span className="mt-1 block text-[11px] leading-4 text-white/65">{description}</span>
                   </button>
                 );
               })}

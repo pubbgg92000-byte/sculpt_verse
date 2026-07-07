@@ -13,13 +13,13 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "small",
     name: "Small Sculptures",
-    description: "Perfect for gardens, entrances, and small outdoor spaces.",
+    description: "For garden corners, entrances, and smaller outdoor areas.",
     priceRange: "₹15,000 — ₹75,000",
     sizeRange: "Up to 3 feet",
     features: [
       "Single sculpture piece",
       "Cement or FRP material",
-      "Weather-resistant finish",
+      "Outdoor paint or coating",
       "Basic painting & detailing",
       "Local delivery discussed separately",
       "Basic care guidance",
@@ -30,13 +30,13 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "medium",
     name: "Medium Sculptures",
-    description: "Ideal for resorts, villas, and commercial spaces.",
+    description: "For villas, schools, resorts, and commercial spaces.",
     priceRange: "₹75,000 — ₹2,50,000",
     sizeRange: "3 to 8 feet",
     features: [
       "Single or paired sculpture",
       "Steel-reinforced framework",
-      "Premium cement or FRP",
+      "Cement or FRP as suitable",
       "Detailed hand-painting",
       "Installation support as needed",
       "Transport planning guidance",
@@ -48,13 +48,13 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "large",
     name: "Large Installations",
-    description: "Statement pieces for resorts, theme parks, and landmarks.",
+    description: "For larger sites that need structure, transport, and setup planning.",
     priceRange: "₹2,50,000 — ₹10,00,000",
     sizeRange: "8 to 20+ feet",
     features: [
-      "Life-sized or larger",
+      "Large-size sculpture work",
       "Heavy-duty steel framework",
-      "Premium materials & finishes",
+      "Material and finish options",
       "Detailed shaping & painting",
       "Site coordination support",
       "Transport & setup planned separately",
@@ -67,7 +67,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "custom",
     name: "Custom Projects",
-    description: "Complete bespoke fabrication from concept to installation.",
+    description: "Custom work planned from reference to installation scope.",
     priceRange: "Custom Pricing",
     sizeRange: "Any size",
     features: [

@@ -27,7 +27,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sculptverse.in"),
   title: {
-    default: "SculptVerse — Transforming Spaces Into Living Art",
+    default: "SculptVerse — Custom Sculptures in Hyderabad",
     template: "%s | SculptVerse",
   },
   description:
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "/",
     siteName: "SculptVerse",
-    title: "SculptVerse — Transforming Spaces Into Living Art",
+    title: "SculptVerse — Custom Sculptures in Hyderabad",
     description:
       "Hyderabad-based custom cement, FRP, metal and landscape sculptures for memorable spaces.",
     images: [
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SculptVerse — Transforming Spaces Into Living Art",
+    title: "SculptVerse — Custom Sculptures in Hyderabad",
     description:
-      "Premium custom cement, metal & landscape sculptures for resorts, villas, parks & schools.",
+      "Custom cement, metal and landscape sculptures for resorts, villas, parks and schools.",
     images: ["/og-image.png"],
   },
   robots: {

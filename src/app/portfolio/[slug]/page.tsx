@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { projects, getProjectBySlug } from "@/data/projects";
-import { ArrowLeft, MapPin, Ruler, Layers, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, MapPin, Ruler, Layers, MessageCircle } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/utils";
+import { ProjectGallery } from "@/components/sections/ProjectGallery";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -26,8 +27,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound();
 
   const related = projects
-    .filter((p) => p.category === project.category && p.id !== project.id)
-    .slice(0, 3);
+    .filter((p) => p.id !== project.id)
+    .sort((a, b) => {
+      if (a.category === project.category && b.category !== project.category) return -1;
+      if (a.category !== project.category && b.category === project.category) return 1;
+      return 0;
+    })
+    .slice(0, 5);
 
   return (
     <>
@@ -70,27 +76,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* Gallery */}
       <section className="bg-warm-white py-12">
         <div className="container-wide px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.images.map((img, i) => (
-              <div
-                key={i}
-                className={`relative rounded-xl overflow-hidden ${
-                  i === 0 ? "md:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={img}
-                  alt={`${project.title} - Image ${i + 1}`}
-                  fill
-                  unoptimized
-                  loading={i === 0 ? undefined : "eager"}
-                  sizes={i === 0 ? "100vw" : "50vw"}
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                  priority={i === 0}
-                />
-              </div>
-            ))}
-          </div>
+          <ProjectGallery images={project.images} title={project.title} />
         </div>
       </section>
 
@@ -115,8 +101,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   Interested in a Similar Project?
                 </h3>
                 <p className="text-sm text-charcoal-light mb-6">
-                  Get a free quote for your custom sculpture project. We&apos;ll
-                  design something perfect for your space.
+                  Share your reference, site size and budget range. We&apos;ll
+                  discuss practical material and installation options.
                 </p>
                 <a
                   href={getWhatsAppLink(
@@ -148,29 +134,39 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <h2 className="heading-section text-2xl md:text-3xl mb-8">
               Related Projects
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
               {related.map((r) => (
                 <Link
                   key={r.id}
                   href={`/portfolio/${r.slug}`}
-                  className="group image-card rounded-xl overflow-hidden"
+                  className="group image-card relative h-[360px] w-[78vw] max-w-[360px] flex-shrink-0 snap-center overflow-hidden rounded-xl sm:w-[46vw] lg:w-[30vw]"
                 >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={r.images[0]}
-                      alt={r.title}
-                      fill
-                      unoptimized
-                      loading="eager"
-                      sizes="33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="overlay" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                      <h3 className="text-lg font-bold text-warm-white" style={{ fontFamily: "var(--font-heading)" }}>
-                        {r.title}
-                      </h3>
-                    </div>
+                  <Image
+                    src={r.images[0]}
+                    alt={r.title}
+                    fill
+                    unoptimized
+                    loading="eager"
+                    sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 30vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    style={{
+                      objectPosition: r.category === "animals" ? "center top" : "center center",
+                    }}
+                  />
+                  <div className="overlay" />
+                  <div className="project-open-icon absolute right-4 top-4 z-10 grid h-6 w-6 place-items-center text-white">
+                    <ArrowUpRight className="h-3 w-3" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                    <span className="mb-2 inline-block rounded bg-forest/75 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-warm-white">
+                      {r.categoryLabel}
+                    </span>
+                    <h3 className="text-lg font-bold text-warm-white" style={{ fontFamily: "var(--font-heading)" }}>
+                      {r.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-warm-white/70">
+                      View this project
+                    </p>
                   </div>
                 </Link>
               ))}

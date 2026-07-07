@@ -110,8 +110,8 @@ export function ProcessSection() {
           </h2>
           <div className="divider mx-auto mb-6" />
           <p className="text-charcoal-light max-w-xl mx-auto">
-            Every sculpture follows our proven six-step process, ensuring
-            quality, transparency, and stunning results.
+            A simple six-step path keeps the idea, budget, material, and site
+            work clear from the start.
           </p>
         </div>
 

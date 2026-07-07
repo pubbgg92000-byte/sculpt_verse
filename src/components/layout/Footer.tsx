@@ -48,15 +48,15 @@ export function Footer() {
                 </div>
               </Link>
               <p className="text-sm leading-relaxed text-charcoal-light mb-6">
-                Transforming spaces into living art. Premium custom sculptures
-                for resorts, villas, parks, and institutions across India.
+                Custom outdoor sculptures, garden features and themed pieces
+                planned around site, material, budget and maintenance.
               </p>
               <div className="divider mb-6" />
               <p
                 className="text-lg text-charcoal-light/60"
                 style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
               >
-                &ldquo;Where Imagination Meets Craftsmanship&rdquo;
+                &ldquo;Built from references, measurements and practical choices.&rdquo;
               </p>
             </div>
 
@@ -129,7 +129,7 @@ export function Footer() {
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=ragulakanakaraju@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-charcoal hover:text-forest transition-colors"
+                    className="break-all text-sm text-charcoal hover:text-forest transition-colors"
                   >
                     ragulakanakaraju@gmail.com
                   </a>
@@ -155,7 +155,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} SculptVerse. All rights reserved.
           </p>
           <p className="text-xs text-charcoal-light/40">
-            Crafted with passion in India 🇮🇳
+            Hyderabad based custom sculpture work
           </p>
         </div>
       </div>

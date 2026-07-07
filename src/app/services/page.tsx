@@ -8,7 +8,7 @@ import { ContactCTA } from "@/components/sections/ContactCTA";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Custom sculpture services including animal sculptures, garden features, metal art, resort installations, playground installations, and bespoke fabrication.",
+    "Custom sculpture services for animal figures, garden features, metal work, resort installations, playground pieces, and site-specific fabrication.",
 };
 
 export default function ServicesPage() {
@@ -28,8 +28,8 @@ export default function ServicesPage() {
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            From intimate garden features to monumental public installations,
-            our artisans bring every vision to life with unmatched skill.
+            Share the site, reference, size idea, and budget range. We&apos;ll help
+            choose a practical material, finish, and installation approach.
           </p>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
                       </div>
                       <Link
                         href="/contact"
-                        className="btn-primary text-xs py-3 px-6 flex items-center gap-2"
+                        className="btn-primary flex w-full items-center gap-2 px-6 py-3 text-xs sm:w-auto"
                       >
                         Inquire Now
                         <ArrowRight className="w-4 h-4" />

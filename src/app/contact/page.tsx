@@ -72,12 +72,12 @@ export default function ContactPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-warm-white mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Let&apos;s Create Together
+            Tell Us What You Want To Make
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            Share your vision with us. We&apos;ll get back to you within 24
-            hours with a detailed proposal and free quote.
+            Send your reference, size idea, location, and budget range. We&apos;ll
+            reply with the practical next steps.
           </p>
         </div>
       </section>

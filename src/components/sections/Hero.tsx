@@ -65,21 +65,22 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="hero-reveal max-w-3xl text-[clamp(3.25rem,12vw,5rem)] font-semibold leading-[0.9] tracking-[-0.045em] text-white lg:text-[6.5rem]" style={{ fontFamily: "var(--font-heading)" }}>
-            Ideas, shaped into <span className="text-bronze-light">art.</span>
+          <h1 className="hero-reveal max-w-3xl text-[clamp(2.85rem,12vw,5rem)] font-semibold leading-[0.95] text-white lg:text-[6.5rem] lg:leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
+            Custom sculptures for <span className="text-bronze-light">real spaces.</span>
           </h1>
 
           <p className="hero-reveal mt-6 max-w-lg text-base leading-7 text-white/72 sm:text-lg">
-            Made-to-order sculptures for spaces people remember.
+            Cement, FRP, metal and garden features planned around your site,
+            budget and installation needs.
           </p>
 
           <div className="hero-reveal mt-8 flex flex-col gap-3 min-[420px]:flex-row">
-            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hero-primary group inline-flex min-h-13 items-center justify-center gap-2 rounded-md bg-bronze px-7 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_18px_55px_rgba(173,105,21,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-bronze-light hover:shadow-[0_24px_65px_rgba(173,105,21,0.46)]">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hero-primary group inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-md bg-bronze px-7 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_18px_55px_rgba(173,105,21,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-bronze-light hover:shadow-[0_24px_65px_rgba(173,105,21,0.46)] min-[420px]:w-auto">
               <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
               Discuss your idea
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
-            <Link href="/portfolio" className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-md border border-white/35 bg-black/10 px-7 text-xs font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-charcoal">
+            <Link href="/portfolio" className="group inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-md border border-white/35 bg-black/10 px-7 text-xs font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-charcoal min-[420px]:w-auto">
               View selected work
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>

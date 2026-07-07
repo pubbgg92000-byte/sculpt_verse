@@ -5,7 +5,7 @@ import { ContactCTA } from "@/components/sections/ContactCTA";
 export const metadata: Metadata = {
   title: "Our Process",
   description:
-    "Learn about our proven 6-step process for creating custom sculptures — from initial consultation and design through steel framework, sculpting, finishing, and professional installation.",
+    "See the practical steps for custom sculpture work, from reference and size discussion to material choice, making, finishing, transport, and installation.",
 };
 
 export default function ProcessPage() {
@@ -25,8 +25,8 @@ export default function ProcessPage() {
           </h1>
           <div className="divider mx-auto mb-6" />
           <p className="text-warm-white/60 max-w-xl mx-auto">
-            Every custom piece follows a practical six-step journey — from your
-            first call to the final installation. No surprises, just excellence.
+            We start with your reference and site details, then discuss material,
+            size, finish, timeline, transport, and installation needs.
           </p>
         </div>
       </section>
