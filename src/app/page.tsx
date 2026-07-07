@@ -1,3 +1,4 @@
+// Demo deploy comment - checking Vercel auto-deployment
 import { Hero } from "@/components/sections/Hero";
 import { FeaturedCategories } from "@/components/sections/FeaturedCategories";
 import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
