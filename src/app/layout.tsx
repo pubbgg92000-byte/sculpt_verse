@@ -25,13 +25,18 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sculptverse.in"),
+  metadataBase: new URL("https://sculpt-verse.vercel.app"),
   title: {
-    default: "SculptVerse — Custom Sculptures in Hyderabad",
+    default: "SculptVerse - Custom Sculptures in Hyderabad",
     template: "%s | SculptVerse",
   },
   description:
-    "Hyderabad-based custom sculpture studio for cement, FRP, metal and landscape sculptures for homes, parks, schools, resorts and businesses.",
+    "Custom cement, FRP, metal and garden sculptures in Hyderabad for villas, resorts, parks, schools and memorable real spaces.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   keywords: [
     "custom sculptures",
     "cement sculptures",
@@ -47,25 +52,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "/",
+    url: "https://sculpt-verse.vercel.app/",
     siteName: "SculptVerse",
-    title: "SculptVerse — Custom Sculptures in Hyderabad",
+    title: "SculptVerse - Custom Sculptures in Hyderabad",
     description:
-      "Hyderabad-based custom cement, FRP, metal and landscape sculptures for memorable spaces.",
+      "Custom cement, FRP, metal and garden sculptures planned around your site, budget and installation needs.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SculptVerse custom giraffe sculptures in a landscaped garden",
+        alt: "SculptVerse custom giraffe sculptures displayed in a landscaped garden",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SculptVerse — Custom Sculptures in Hyderabad",
+    title: "SculptVerse - Custom Sculptures in Hyderabad",
     description:
-      "Custom cement, metal and landscape sculptures for resorts, villas, parks and schools.",
+      "Custom cement, FRP, metal and garden sculptures for villas, resorts, parks and schools.",
     images: ["/og-image.png"],
   },
   robots: {

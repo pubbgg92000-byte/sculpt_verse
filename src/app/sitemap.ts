@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://sculptverse.in";
+  const baseUrl = "https://sculpt-verse.vercel.app";
 
   const staticPages = [
     "",
